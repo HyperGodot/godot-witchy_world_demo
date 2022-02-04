@@ -1,0 +1,3 @@
+# ignore Godot imports (folder and files)
+.import
+*.import
