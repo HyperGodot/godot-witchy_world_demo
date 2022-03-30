@@ -1,10 +1,14 @@
-HTerrain plugin demo project
-================================
+# Witch Island HyperGodot Example 
 
-This is a demo of the HTerrain plugin I made for Godot Engine 3.
-It exists as a separate repo in order to keep the core repository clean.
+slice-of-life demo about a utopic witch-themed commune 
 
-This plugin is required: https://github.com/Zylann/godot_heightmap_native_plugin
-It is bundled with the demo to make it work out of the box. If any problem arises, check first if a new version is available, because I don't update the demo as frequently.
+## Plugins included
+* Hterrain 
+* Scatter
+* TimeofDay
 
-Textures are from http://cc0textures.com/home
+## Credits 
+rangermauve
+ashes
+dresk
+fleeky
