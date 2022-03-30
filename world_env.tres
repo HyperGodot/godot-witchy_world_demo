@@ -1,0 +1,37 @@
+[gd_resource type="Environment" format=2]
+
+[resource]
+background_mode = 2
+background_energy = 0.0
+ambient_light_color = Color( 0.0588235, 0.0862745, 0.145098, 1 )
+ambient_light_energy = 1.2
+ambient_light_sky_contribution = 0.65
+fog_enabled = true
+fog_color = Color( 0.137255, 0.203922, 0.278431, 1 )
+fog_sun_color = Color( 0.52549, 0.576471, 0.705882, 1 )
+fog_depth_begin = 35.2
+fog_depth_end = 1051.5
+fog_depth_curve = 0.482967
+fog_transmit_enabled = true
+fog_transmit_curve = 2.46228
+fog_height_enabled = true
+fog_height_min = 85.5
+fog_height_max = -10.0
+fog_height_curve = 43.7134
+tonemap_mode = 2
+tonemap_exposure = 1.21
+tonemap_white = 1.24
+ss_reflections_enabled = true
+ssao_enabled = true
+ssao_intensity = 2.21
+dof_blur_far_distance = 157.87
+dof_blur_far_transition = 10.27
+glow_enabled = true
+glow_intensity = 1.77
+glow_strength = 0.86
+glow_bloom = 0.05
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 36.81
+glow_hdr_scale = 0.31
+glow_bicubic_upscale = true

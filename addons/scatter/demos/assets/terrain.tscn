@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/scatter/demos/assets/terrain.glb" type="PackedScene" id=1]
+[ext_resource path="res://addons/scatter-2.8.4/demos/assets/terrain.glb" type="PackedScene" id=1]
 [ext_resource path="res://addons/scatter/demos/assets/materials/rock.tres" type="Material" id=2]
 [ext_resource path="res://addons/scatter/demos/assets/materials/floor.tres" type="Material" id=3]
 

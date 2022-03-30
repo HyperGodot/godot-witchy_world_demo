@@ -1,0 +1,8 @@
+{
+	"contains_albedo": false,
+	"resolution": 512,
+	"src": {
+		"a": "res://addons/zylann.hterrain_demo/textures/ground/src/rocks07/Rocks07_rgh.jpg",
+		"rgb": "res://addons/zylann.hterrain_demo/textures/ground/src/rocks07/Rocks07_nrm.jpg"
+	}
+}

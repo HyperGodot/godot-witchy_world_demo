@@ -1,5 +1,0 @@
-# TimeOfDay.
-
-> C# version.
-
-
