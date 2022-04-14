@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://addons/jc.godot.time-of-day/Code/Sky/Skydome.gd" type="Script" id=1]
 [ext_resource path="res://addons/scatter/src/core/scatter.gd" type="Script" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://assets/skull.tscn" type="PackedScene" id=26]
 [ext_resource path="res://3dCharacterController-master/3dCC.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/shaders/BlueFire.tscn" type="PackedScene" id=28]
+[ext_resource path="res://assets/night_ghost.scn" type="PackedScene" id=29]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 6 )
@@ -204,6 +205,9 @@ _data = {
 }
 
 [node name="TerrainDemo" type="Node"]
+
+[node name="night_ghost" parent="." instance=ExtResource( 29 )]
+transform = Transform( -5.30893, 0, 3.80671, 0, 6.53267, 0, -3.80671, 0, -5.30893, 168.582, 16.6619, 157.955 )
 
 [node name="BlueFire" parent="." instance=ExtResource( 28 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 197.257, 25.7958, 276.9 )
