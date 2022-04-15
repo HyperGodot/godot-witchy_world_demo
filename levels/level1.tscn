@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://addons/jc.godot.time-of-day/Code/Sky/Skydome.gd" type="Script" id=1]
 [ext_resource path="res://addons/scatter/src/core/scatter.gd" type="Script" id=2]
@@ -29,6 +29,10 @@
 [ext_resource path="res://3dCharacterController-master/3dCC.tscn" type="PackedScene" id=27]
 [ext_resource path="res://assets/shaders/BlueFire.tscn" type="PackedScene" id=28]
 [ext_resource path="res://assets/night_ghost.scn" type="PackedScene" id=29]
+[ext_resource path="res://assets/night_ghost.glb" type="PackedScene" id=30]
+[ext_resource path="res://assets/ratface.glb" type="PackedScene" id=31]
+[ext_resource path="res://assets/laughgoblin.glb" type="PackedScene" id=32]
+[ext_resource path="res://assets/animal_mask.glb" type="PackedScene" id=33]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 6 )
@@ -4155,6 +4159,24 @@ transform = Transform( -2.834, 0.021408, -4.11922, -0.963323, 4.85784, 0.688006,
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
 autoplay = true
+
+[node name="night_ghost2" parent="." instance=ExtResource( 30 )]
+transform = Transform( -7.54449, 0, 2.66098, 0, 8, 0, -2.66098, 0, -7.54449, 234.929, 6.12811, 255.328 )
+
+[node name="ratface" parent="night_ghost2" instance=ExtResource( 31 )]
+transform = Transform( -0.00629754, 0.0213382, -0.208818, -0.113702, 0.175262, 0.0213383, 0.176443, 0.113702, 0.00629754, 0.00243378, 0.309782, 0.0129738 )
+
+[node name="night_ghost3" parent="." instance=ExtResource( 30 )]
+transform = Transform( -4.89785, 0, -6.32543, 0, 8, 0, 6.32543, 0, -4.89785, 203.646, 61.3048, 335.322 )
+
+[node name="animal_mask" parent="night_ghost3" instance=ExtResource( 33 )]
+transform = Transform( -0.0567734, 0.072515, -1.6975, -0.604586, 1.58642, 0.0879902, 1.58785, 0.606637, -0.0271912, 0.00198555, 0.307516, 0.0339546 )
+
+[node name="night_ghost4" parent="." instance=ExtResource( 30 )]
+transform = Transform( -7.43115, 0, -2.96278, 0, 8, 0, 2.96278, 0, -7.43115, 205.634, 24.3557, 270.183 )
+
+[node name="laughgoblin" parent="night_ghost4" instance=ExtResource( 32 )]
+transform = Transform( 9.05975e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, 9.05975e-08, 0, 0.322318, 0 )
 
 [editable path="BlueFire/jameson_bear3"]
 [editable path="BlueFire/jameson_bear"]
