@@ -4,8 +4,3 @@
 
 [node name="tumble" instance=ExtResource( 1 )]
 transform = Transform( 0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0 )
-
-[node name="SkeletonIK" type="SkeletonIK" parent="Armature/Skeleton" index="2"]
-process_priority = 1
-root_bone = "DEF-upper_arm.R"
-tip_bone = "DEF-hand.R"

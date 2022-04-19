@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://hypergodot/hyper_gossip/hyper_gossip.gd" type="Script" id=1]
 [ext_resource path="res://main.gd" type="Script" id=2]
@@ -6,14 +6,16 @@
 [ext_resource path="res://hypergodot/hyper_godot_core.gd" type="Script" id=4]
 [ext_resource path="res://game/player/player_core_local.tscn" type="PackedScene" id=5]
 [ext_resource path="res://hypergodot/hyper_debugui/hyper_debugui.tscn" type="PackedScene" id=6]
-[ext_resource path="res://levels/level1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/maps/map_witch_island/map_witch_island.scn" type="PackedScene" id=7]
+[ext_resource path="res://game/maps/map_core.gd" type="Script" id=8]
 
 [node name="Main" type="Node"]
 script = ExtResource( 2 )
 
 [node name="Maps" type="Node" parent="."]
 
-[node name="witch_island" parent="Maps" instance=ExtResource( 7 )]
+[node name="map_witch_island" parent="Maps" instance=ExtResource( 7 )]
+script = ExtResource( 8 )
 
 [node name="Players" type="Node" parent="."]
 

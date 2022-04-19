@@ -9,8 +9,6 @@ signal player_mousemotion_event(event)
 signal player_jump()
 # signal player_roll()
 signal player_move(inputDirection)
-signal player_shoot_grapplinghook()
-signal player_release_grapplinghook()
 signal player_toggle_light()
 # signal player_shoot()
 
@@ -50,12 +48,6 @@ func _input(event : InputEvent):
 		
 	if event.is_action_pressed("jump"):
 		emit_signal("player_jump")
-		
-	if event.is_action_pressed("shoot_grapplinghook"):
-		emit_signal("player_shoot_grapplinghook")
-	
-	if event.is_action_released("shoot_grapplinghook"):
-		emit_signal('player_release_grapplinghook')
 	
 	#if event.is_action_pressed("roll"):
 	#	emit_signal("player_action_roll")
