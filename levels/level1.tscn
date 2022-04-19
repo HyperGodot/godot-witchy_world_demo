@@ -1,6 +1,5 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=52 format=2]
 
-[ext_resource path="res://addons/jc.godot.time-of-day/Code/Sky/Skydome.gd" type="Script" id=1]
 [ext_resource path="res://addons/scatter/src/core/scatter.gd" type="Script" id=2]
 [ext_resource path="res://addons/scatter/src/core/scatter_item.gd" type="Script" id=3]
 [ext_resource path="res://addons/scatter/src/core/scatter_exclude_path.gd" type="Script" id=4]
@@ -9,13 +8,11 @@
 [ext_resource path="res://assets/emit_blue.material" type="Material" id=7]
 [ext_resource path="res://assets/pine_leaf_ao.material" type="Material" id=8]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" type="Script" id=9]
-[ext_resource path="res://world_env.tres" type="Environment" id=10]
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot3_normal_roughness.packed_tex" type="Texture" id=11]
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot1_normal_roughness.packed_tex" type="Texture" id=12]
 [ext_resource path="res://assets/stem.material" type="Material" id=13]
 [ext_resource path="res://assets/shaders/water_3d.shader" type="Shader" id=14]
 [ext_resource path="res://addons/zylann.hterrain_demo/terrain_data/data.hterrain" type="Resource" id=15]
-[ext_resource path="res://assets/jameson_bear.glb" type="PackedScene" id=16]
 [ext_resource path="res://assets/sounds/nature_sounds.mp3" type="AudioStream" id=17]
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot3_albedo_bump.packed_tex" type="Texture" id=18]
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot0_albedo_bump.packed_tex" type="Texture" id=19]
@@ -26,8 +23,6 @@
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot2_albedo_bump.packed_tex" type="Texture" id=24]
 [ext_resource path="res://assets/emit_warm.material" type="Material" id=25]
 [ext_resource path="res://assets/skull.tscn" type="PackedScene" id=26]
-[ext_resource path="res://3dCharacterController-master/3dCC.tscn" type="PackedScene" id=27]
-[ext_resource path="res://assets/shaders/BlueFire.tscn" type="PackedScene" id=28]
 [ext_resource path="res://assets/night_ghost.scn" type="PackedScene" id=29]
 [ext_resource path="res://assets/night_ghost.glb" type="PackedScene" id=30]
 [ext_resource path="res://assets/ratface.glb" type="PackedScene" id=31]
@@ -208,25 +203,10 @@ _data = {
 "tilts": PoolRealArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 }
 
-[node name="TerrainDemo" type="Node"]
+[node name="TerrainDemo" type="Spatial"]
 
 [node name="night_ghost" parent="." instance=ExtResource( 29 )]
 transform = Transform( -5.30893, 0, 3.80671, 0, 6.53267, 0, -3.80671, 0, -5.30893, 168.582, 16.6619, 157.955 )
-
-[node name="BlueFire" parent="." instance=ExtResource( 28 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 197.257, 25.7958, 276.9 )
-
-[node name="jameson_bear3" parent="BlueFire" instance=ExtResource( 16 )]
-transform = Transform( 0.00554541, 0.00623354, -0.069501, -0.0149962, 0.0681975, 0.00492013, 0.0681494, 0.0144996, 0.0067381, 4.93103, -3.44851, -3.21872 )
-
-[node name="jameson_meshexport" parent="BlueFire/jameson_bear3" index="0"]
-skeleton = NodePath("../../jameson_bear2")
-
-[node name="jameson_bear" parent="BlueFire" instance=ExtResource( 16 )]
-transform = Transform( -0.0687798, -0.00449644, 0.0122114, -0.00278093, 0.0692498, 0.0098356, -0.0127123, 0.00917899, -0.0682213, 0.611343, -3.92798, 5.33615 )
-
-[node name="jameson_bear2" parent="BlueFire" instance=ExtResource( 16 )]
-transform = Transform( 0.0313611, 0.00238447, 0.0625363, -0.0149962, 0.0681975, 0.00492013, -0.0607584, -0.0156016, 0.0310644, -6.07159, -3.44851, 0.135895 )
 
 [node name="HTerrain" type="Spatial" parent="."]
 script = ExtResource( 5 )
@@ -264,107 +244,6 @@ transform = Transform( 0, -0.983172, -0.182681, 0.528987, -0.155029, 0.834349, -
 light_color = Color( 0.572549, 0.776471, 0.956863, 1 )
 light_energy = 0.135999
 shadow_enabled = true
-
-[node name="3dCC" parent="." instance=ExtResource( 27 )]
-transform = Transform( 1.42704, 0, -1.40127, 0, 2, 0, 1.40127, 0, 1.42704, 159.599, 16.0573, 118.889 )
-
-[node name="Camera" parent="3dCC/UpperCollider" index="1"]
-transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.609, 0.404 )
-fov = 78.0
-far = 1000.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 10 )
-
-[node name="Skydome" type="Node" parent="WorldEnvironment"]
-script = ExtResource( 1 )
-sky_visible = true
-dome_radius = 10.0
-tonemap_level = 0.0
-exposure = 1.879
-ground_color = Color( 0, 0, 0, 0.85098 )
-sky_layers = 4
-sky_render_priority = -128
-horizon_level = 0.0
-sun_altitude = -146.548
-sun_azimuth = -19.354
-sun_disk_color = Color( 0.996094, 0.541334, 0.140076, 1 )
-sun_disk_intensity = 2.0
-sun_disk_size = 0.015
-sun_light_path = NodePath("")
-sun_light_color = Color( 0.984314, 0.843137, 0.788235, 1 )
-sun_horizon_light_color = Color( 1, 0.384314, 0.243137, 1 )
-sun_light_energy = 1.455
-moon_altitude = 326.548
-moon_azimuth = 160.646
-moon_color = Color( 1, 1, 1, 1 )
-moon_size = 0.215
-enable_set_moon_texture = false
-moon_resolution = 2
-moon_light_path = NodePath("../../MoonLight")
-moon_light_color = Color( 0.572549, 0.776471, 0.956863, 1 )
-moon_light_energy = 0.163
-deep_space_euler = Vector3( 1.23301, 0, -2.55775 )
-background_color = Color( 0.71, 0.71, 0.71, 0.85098 )
-set_background_texture = false
-stars_field_color = Color( 1, 1, 1, 1 )
-set_stars_field_texture = false
-stars_scintillation = 0.697
-stars_scintillation_speed = 1.512
-atm_quality = 1
-atm_wavelenghts = Vector3( 680, 550, 440 )
-atm_darkness = 0.5
-atm_sun_instensity = 30.0
-atm_day_tint = Color( 0.807843, 0.909804, 1, 1 )
-atm_horizon_light_tint = Color( 0.980392, 0.635294, 0.462745, 1 )
-atm_enable_moon_scatter_mode = false
-atm_night_tint = Color( 0.121569, 0.152941, 0.203922, 1 )
-atm_level_params = Vector3( 1, 0, 0 )
-atm_thickness = 0.802
-atm_mie = 0.19
-atm_turbidity = -0.073
-atm_sun_mie_tint = Color( 0.666667, 1, 0.984314, 1 )
-atm_sun_mie_intensity = 1.0
-atm_sun_mie_anisotropy = 0.763
-atm_moon_mie_tint = Color( 0.0313726, 0.0431373, 0.0627451, 1 )
-atm_moon_mie_intensity = 0.7
-atm_moon_mie_anisotropy = 0.8
-fog_visible = true
-fog_atm_level_params_offset = Vector3( -0.003, 0, -1 )
-fog_density = 0.0212021
-fog_rayleigh_depth = 0.0183455
-fog_mie_depth = 0.0620838
-fog_falloff = 8.257
-fog_start = 321.101
-fog_end = 862.427
-fog_layers = 524288
-fog_render_priority = 123
-clouds_thickness = 1.7
-clouds_coverage = 0.528
-clouds_absorption = 1.957
-clouds_sky_tint_fade = 0.326
-clouds_intensity = 9.355
-clouds_size = 1.9
-clouds_uv = Vector2( 0.16, 0.11 )
-clouds_offset = Vector2( 0.21, 0.175 )
-clouds_offset_speed = 0.01
-set_clouds_texture = false
-clouds_cumulus_visible = true
-clouds_cumulus_day_color = Color( 0.823529, 0.87451, 1, 1 )
-clouds_cumulus_horizon_light_color = Color( 1, 0.333333, 0.152941, 1 )
-clouds_cumulus_night_color = Color( 0.090196, 0.094118, 0.129412, 1 )
-clouds_cumulus_thickness = 0.054
-clouds_cumulus_coverage = 0.551
-clouds_cumulus_absorption = 3.389
-clouds_cumulus_noise_freq = 2.905
-clouds_cumulus_intensity = 0.997
-clouds_cumulus_mie_intensity = 1.009
-clouds_cumulus_mie_anisotropy = 0.372
-clouds_cumulus_size = 0.448
-clouds_cumulus_offset = Vector3( 0.64, 0.522, 0.128 )
-clouds_cumulus_offset_speed = 0.005
-set_clouds_cumulus_texture = false
-enviro = null
 
 [node name="Sea" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 256 )
@@ -4177,8 +4056,3 @@ transform = Transform( -7.43115, 0, -2.96278, 0, 8, 0, 2.96278, 0, -7.43115, 205
 
 [node name="laughgoblin" parent="night_ghost4" instance=ExtResource( 32 )]
 transform = Transform( 9.05975e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, 9.05975e-08, 0, 0.322318, 0 )
-
-[editable path="BlueFire/jameson_bear3"]
-[editable path="BlueFire/jameson_bear"]
-[editable path="BlueFire/jameson_bear2"]
-[editable path="3dCC"]

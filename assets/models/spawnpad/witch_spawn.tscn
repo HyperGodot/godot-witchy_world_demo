@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/shaders/stylized_fire.shader" type="Shader" id=1]
+[ext_resource path="res://assets/shaders/FireMask.png" type="Texture" id=2]
+[ext_resource path="res://assets/jameson_bear.glb" type="PackedScene" id=3]
+[ext_resource path="res://assets/shaders/BlueFireGradient.tres" type="Texture" id=4]
+[ext_resource path="res://assets/shaders/HoleNoise.png" type="Texture" id=5]
+[ext_resource path="res://assets/shaders/BlueFire.tscn" type="PackedScene" id=6]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/emission_intensity = 2.0
+shader_param/time_scale = 3.0
+shader_param/texture_scale = Vector2( 1, 1 )
+shader_param/edge_softness = 0.1
+shader_param/noise_texture = ExtResource( 5 )
+shader_param/texture_mask = ExtResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0 ), 0.0, 3.65289, 0, 0, Vector2( 0.556561, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+width = 128
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+lifetime_randomness = 0.81
+emission_shape = 5
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 0.0
+emission_ring_height = 1.0
+emission_ring_axis = Vector3( 0, 0, 1 )
+direction = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.5
+linear_accel = 4.0
+scale = 2.0
+scale_random = 1.0
+scale_curve = SubResource( 5 )
+color_ramp = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=7]
+size = Vector2( 0.5, 0.5 )
+
+[node name="witch_spawn" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 197.257, 25.7958, 276.9 )
+
+[node name="jameson_bear3" type="Spatial" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.00554541, 0.00623354, -0.069501, -0.0149962, 0.0681975, 0.00492013, 0.0681494, 0.0144996, 0.0067381, 4.93103, -3.44851, -3.21872 )
+
+[node name="jameson_bear" type="Spatial" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.0687798, -0.00449644, 0.0122114, -0.00278093, 0.0692498, 0.0098356, -0.0127123, 0.00917899, -0.0682213, 0.611343, -3.92798, 5.33615 )
+
+[node name="jameson_bear2" type="Spatial" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.0313611, 0.00238447, 0.0625363, -0.0149962, 0.0681975, 0.00492013, -0.0607584, -0.0156016, 0.0310644, -6.07159, -3.44851, 0.135895 )
+
+[node name="BlueFire" type="Particles" parent="." instance=ExtResource( 6 )]
+material_override = SubResource( 1 )
+cast_shadow = 0
+amount = 50
+randomness = 0.74
+local_coords = false
+draw_order = 1
+process_material = SubResource( 8 )
+draw_pass_1 = SubResource( 7 )

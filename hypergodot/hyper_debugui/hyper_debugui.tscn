@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hypergodot/hyper_debugui/hyper_debugui.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.470588 )
+
+[node name="HyperDebugUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+
+[node name="HypercoreDebugPanel" type="Panel" parent="."]
+margin_left = 889.0
+margin_top = 19.0
+margin_right = 1421.0
+margin_bottom = 192.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HypercoreDebugContainer" type="GridContainer" parent="HypercoreDebugPanel"]
+margin_left = 4.0
+margin_top = 6.0
+margin_right = 543.0
+margin_bottom = 229.0
+mouse_filter = 2
+columns = 2
+
+[node name="GatewayStartStopButton" type="Button" parent="HypercoreDebugPanel/HypercoreDebugContainer"]
+margin_right = 160.0
+margin_bottom = 20.0
+focus_mode = 0
+text = "Start Gateway"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GatewayStatus_Value" type="Label" parent="HypercoreDebugPanel/HypercoreDebugContainer"]
+margin_left = 164.0
+margin_top = 3.0
+margin_right = 514.0
+margin_bottom = 17.0
+text = "Not Running"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GossipURL" type="Label" parent="HypercoreDebugPanel/HypercoreDebugContainer"]
+margin_top = 24.0
+margin_right = 160.0
+margin_bottom = 38.0
+text = "Gossip URL :"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GossipURL_Value" type="Label" parent="HypercoreDebugPanel/HypercoreDebugContainer"]
+margin_left = 164.0
+margin_top = 24.0
+margin_right = 514.0
+margin_bottom = 38.0
+text = "N/A"
+
+[node name="GossipUpdateRate" type="Label" parent="HypercoreDebugPanel/HypercoreDebugContainer"]
+margin_top = 43.0
+margin_right = 160.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 160, 0 )
+text = "Snapshot 1.0 Seconds :"
+align = 2
+
+[node name="GossipUpdateRate_Value" type="HSlider" parent="HypercoreDebugPanel/HypercoreDebugContainer"]
+margin_left = 164.0
+margin_top = 42.0
+margin_right = 514.0
+margin_bottom = 58.0
+rect_min_size = Vector2( 200, 0 )
+max_value = 10.0
+step = 0.25
+value = 1.0
+
+[node name="GossipIDList" type="Label" parent="HypercoreDebugPanel/HypercoreDebugContainer"]
+margin_top = 62.0
+margin_right = 160.0
+margin_bottom = 76.0
+text = "Gossip ID List :"
+align = 2
+
+[node name="GossipIDList_Value" type="ItemList" parent="HypercoreDebugPanel/HypercoreDebugContainer"]
+margin_left = 164.0
+margin_top = 62.0
+margin_right = 514.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 350, 0 )
+auto_height = true
+
+[connection signal="button_up" from="HypercoreDebugPanel/HypercoreDebugContainer/GatewayStartStopButton" to="." method="_on_GatewayStartStopButton_button_up"]
+[connection signal="value_changed" from="HypercoreDebugPanel/HypercoreDebugContainer/GossipUpdateRate_Value" to="." method="_on_GossipUpdateRate_Value_value_changed"]

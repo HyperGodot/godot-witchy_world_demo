@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/player/new_player_collisionui.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0.470588 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 10.0
+margin_top = 119.0
+margin_right = 333.0
+margin_bottom = 329.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+margin_left = 4.0
+margin_top = 6.0
+margin_right = 319.0
+margin_bottom = 207.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="Panel/MarginContainer"]
+margin_right = 315.0
+margin_bottom = 201.0
+auto_height = true
+max_columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

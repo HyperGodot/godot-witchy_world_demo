@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/shaders/stylized_fire.shader" type="Shader" id=1]
+[ext_resource path="res://assets/shaders/FireMask.png" type="Texture" id=2]
+[ext_resource path="res://game/player/particles_onefire_respawn.gd" type="Script" id=3]
+
+[sub_resource type="OpenSimplexNoise" id=8]
+octaves = 1
+period = 167.1
+lacunarity = 0.84
+
+[sub_resource type="NoiseTexture" id=9]
+flags = 3
+seamless = true
+as_normalmap = true
+noise = SubResource( 8 )
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 1 )
+shader_param/emission_intensity = 0.0
+shader_param/time_scale = 1.0
+shader_param/texture_scale = Vector2( 0.5, 0.5 )
+shader_param/edge_softness = 0.1
+shader_param/noise_texture = SubResource( 9 )
+shader_param/texture_mask = ExtResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.571429 )
+colors = PoolColorArray( 0.529412, 0.529412, 0.529412, 0.65098, 1, 1, 1, 0.392157 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 1.0
+emission_shape = 5
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.5
+emission_ring_height = 0.1
+emission_ring_axis = Vector3( 0, 1, 0 )
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity_random = 1.0
+linear_accel_random = 1.0
+radial_accel = 1.0
+radial_accel_random = 1.0
+tangential_accel = -1.0
+tangential_accel_random = 1.0
+scale = 0.0
+scale_random = 1.0
+color = Color( 0.639216, 0.639216, 0.639216, 1 )
+color_ramp = SubResource( 5 )
+hue_variation = -1.0
+
+[sub_resource type="SpatialMaterial" id=2]
+vertex_color_use_as_albedo = true
+params_billboard_mode = 1
+
+[sub_resource type="QuadMesh" id=3]
+material = SubResource( 2 )
+
+[node name="Particles" type="Particles"]
+transform = Transform( 1.20264, 0, 0, 0, 1.20264, 0, 0, 0, 1.20264, 0, 0.157076, 0 )
+material_override = SubResource( 10 )
+amount = 200
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 3 )
+script = ExtResource( 3 )
+
+[node name="Suicide" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Suicide" to="." method="_on_Suicide_timeout"]

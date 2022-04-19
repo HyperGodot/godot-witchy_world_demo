@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0.266667, 0.329412, 1 )
+
+[node name="GrappleVisualLine_1" type="CSGCylinder"]
+radius = 0.04
+height = 28.564
+material = SubResource( 1 )

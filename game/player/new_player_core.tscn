@@ -1,0 +1,88 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://game/player/new_player_state_local.gd" type="Script" id=1]
+[ext_resource path="res://player/models/tumble_asset2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/models/tumble/landing.tres" type="Animation" id=7]
+[ext_resource path="res://player/models/tumble/jump.tres" type="Animation" id=8]
+[ext_resource path="res://player/models/tumble/sprint-loop.tres" type="Animation" id=9]
+[ext_resource path="res://player/models/tumble/run-loop.tres" type="Animation" id=10]
+[ext_resource path="res://player/models/tumble/falling-loop.tres" type="Animation" id=11]
+[ext_resource path="res://player/models/tumble/default.tres" type="Animation" id=12]
+[ext_resource path="res://player/models/tumble/idle-loop.tres" type="Animation" id=13]
+[ext_resource path="res://player/models/tumble/dive-roll.tres" type="Animation" id=14]
+[ext_resource path="res://player/models/tumble/walk-diagonal-left-back-loop.tres" type="Animation" id=15]
+[ext_resource path="res://player/models/tumble/strafe-right-loop.tres" type="Animation" id=16]
+[ext_resource path="res://player/models/tumble/strafe-left-loop.tres" type="Animation" id=17]
+[ext_resource path="res://player/models/tumble/walk-backward-loop.tres" type="Animation" id=18]
+[ext_resource path="res://player/models/tumble/wall_grab_r-loop.tres" type="Animation" id=19]
+[ext_resource path="res://player/models/tumble/walk-diagonal-right-loop.tres" type="Animation" id=20]
+[ext_resource path="res://player/models/tumble/walk-diagonal-right-back-loop.tres" type="Animation" id=21]
+[ext_resource path="res://player/models/tumble/walk-diagonal-left-loop.tres" type="Animation" id=22]
+[ext_resource path="res://player/models/tumble/wall_grab_f-loop.tres" type="Animation" id=23]
+[ext_resource path="res://player/models/tumble/walk-forward-loop.tres" type="Animation" id=24]
+[ext_resource path="res://player/models/tumble/wall_grab_l-loop.tres" type="Animation" id=25]
+[ext_resource path="res://player/models/tumble/wall_run_r-loop.tres" type="Animation" id=26]
+[ext_resource path="res://player/models/tumble/wall_run_l-loop.tres" type="Animation" id=27]
+[ext_resource path="res://player/player_local_core.tres" type="AnimationNodeBlendTree" id=28]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.3
+height = 1.57511
+
+[node name="Player" type="KinematicBody"]
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.787508, 0 )
+shape = SubResource( 1 )
+
+[node name="Mesh" type="Spatial" parent="."]
+
+[node name="tumble" parent="Mesh" instance=ExtResource( 4 )]
+transform = Transform( 0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Mesh/tumble")
+anims/default = ExtResource( 12 )
+anims/dive-roll = ExtResource( 14 )
+anims/falling-loop = ExtResource( 11 )
+anims/idle-loop = ExtResource( 13 )
+anims/jump = ExtResource( 8 )
+anims/landing = ExtResource( 7 )
+anims/run-loop = ExtResource( 10 )
+anims/sprint-loop = ExtResource( 9 )
+anims/strafe-left-loop = ExtResource( 17 )
+anims/strafe-right-loop = ExtResource( 16 )
+anims/walk-backward-loop = ExtResource( 18 )
+anims/walk-diagonal-left-back-loop = ExtResource( 15 )
+anims/walk-diagonal-left-loop = ExtResource( 22 )
+anims/walk-diagonal-right-back-loop = ExtResource( 21 )
+anims/walk-diagonal-right-loop = ExtResource( 20 )
+anims/walk-forward-loop = ExtResource( 24 )
+anims/wall_grab_f-loop = ExtResource( 23 )
+anims/wall_grab_l-loop = ExtResource( 25 )
+anims/wall_grab_r-loop = ExtResource( 19 )
+anims/wall_run_l-loop = ExtResource( 27 )
+anims/wall_run_r-loop = ExtResource( 26 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = ExtResource( 28 )
+anim_player = NodePath("../AnimationPlayer2")
+active = true
+parameters/Blend2/blend_amount = 0.0
+"parameters/Blend2 2/blend_amount" = 0.0
+"parameters/TimeScale 3/scale" = 1.0
+parameters/aim_transition/current = 0
+parameters/air_blend/blend_amount = 1.0
+parameters/air_transition/current = 0
+parameters/falling_scale/scale = 1.0
+parameters/iwr_blend/blend_amount = -1.0
+parameters/jump_scale/scale = 1.0
+parameters/landing_scale/scale = 1.0
+parameters/roll/active = false
+parameters/roll_scale/scale = 1.0
+parameters/run_scale/scale = 1.0
+parameters/strafe/blend_position = Vector2( 0.0673628, 1.37838 )
+parameters/walk_scale/scale = 1.0
+parameters/wall_run/current = 2
