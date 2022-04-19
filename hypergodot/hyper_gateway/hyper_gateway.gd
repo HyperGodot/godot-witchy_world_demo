@@ -133,7 +133,7 @@ func getGatewayPID() -> int:
 
 func getExecutibleName():
 	var name = OS.get_name()
-	if name == 'X11': return "hyper-gateway-linux"
+	if name == 'X11' or name == 'Linux': return "hyper-gateway-linux"
 	if name == 'OSX': return "hyper-gateway-macos"
 	if name == 'Windows': return "hyper-gateway-windows.exe"
 	push_error("Can not start gateway, invalid operating system " + name)
