@@ -117,7 +117,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Witch Island"
-run/main_scene="res://second.tscn"
+run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
 [display]
