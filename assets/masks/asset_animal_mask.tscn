@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/masks/animal_mask.glb" type="PackedScene" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.05
 
 [node name="asset_animal_mask" type="Spatial"]
 
 [node name="animal_mask" parent="." instance=ExtResource( 1 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
+
+[node name="StaticBody" type="StaticBody" parent="animal_mask"]
+
+[node name="CollisionShape" type="CollisionShape" parent="animal_mask/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0420572, 0 )
+shape = SubResource( 1 )
