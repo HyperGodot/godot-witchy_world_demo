@@ -8,7 +8,6 @@ radius = 0.05
 [node name="asset_animal_mask" type="Spatial"]
 
 [node name="animal_mask" parent="." instance=ExtResource( 1 )]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="animal_mask"]
 

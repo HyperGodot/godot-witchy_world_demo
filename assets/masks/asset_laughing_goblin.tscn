@@ -8,7 +8,6 @@ radius = 0.05
 [node name="asset_laughing_goblin" type="Spatial"]
 
 [node name="laughgoblin" parent="." instance=ExtResource( 1 )]
-transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="laughgoblin"]
 

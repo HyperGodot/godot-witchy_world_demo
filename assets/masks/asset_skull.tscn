@@ -8,7 +8,6 @@ radius = 0.05
 [node name="asset_skull" type="Spatial"]
 
 [node name="skull" parent="." instance=ExtResource( 1 )]
-transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="skull"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0384328, 0 )
