@@ -2,6 +2,11 @@ extends KinematicBody
 
 var hyperGossip : HyperGossip
 
+const maskAnimal = preload("res://game/player/masks/mask_animal.tscn")
+const maskLaughingGoblin = preload("res://game/player/masks/mask_laughing_goblin.tscn")
+const maskRatface = preload("res://game/player/masks/mask_ratface.tscn")
+const maskSkull = preload("res://game/player/masks/mask_skull.tscn")
+
 # TODO : These probably should not be in player_core, though I am uncertain yet if they belong elsewhere
 const EVENT_PLAYER_SNAPSHOT = 'player_snapshot'
 const EVENT_PLAYER_WANTSTOJUMP = 'player_wantstojump'
@@ -24,10 +29,11 @@ export var currentSpeed : float = 0
 onready var meshNode : Spatial = $Model
 
 # Skeleton-specific VARs
-#onready var meshSkeletonNode : Skeleton = $Model/Armature/Skeleton
-#onready var meshSkeletonHiddenHand : MeshInstance = $Model/Armature/Skeleton/player001
-#onready var meshHandBone : int = meshSkeletonNode.find_bone("DEF-hand.R")
-#onready var meshHandBonePos : Transform = meshSkeletonNode.get_bone_pose(meshHandBone)
+onready var meshSkeletonNode : Skeleton = $Model/rig/Skeleton
+onready var meshSkeletonHiddenHand : MeshInstance = $Model/rig/Skeleton/player000
+onready var meshFaceBone : int = meshSkeletonNode.find_bone("DEF-spine.006")
+onready var meshFaceBonePos : Transform = meshSkeletonNode.get_bone_pose(meshFaceBone)
+onready var meshMaskAttachment : BoneAttachment = $Model/rig/Skeleton/MaskAttachment
 
 onready var clippedCamera : Spatial = $CameraHead/CameraPivot/ClippedCamera
 onready var clippedCameraHead : Spatial = $CameraHead
@@ -79,6 +85,9 @@ func _ready():
 	
 	# Get HyperGossip
 	hyperGossip = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGossip")
+	
+	var newMask = maskAnimal.instance()
+	meshMaskAttachment.add_child(newMask)
 	
 func snapShotUpdate(_translation : Vector3, _meshDirection : Vector3, _lookingDirection : Vector3):
 	self.translation = _translation

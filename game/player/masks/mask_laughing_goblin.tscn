@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/masks/asset_laughing_goblin.tscn" type="PackedScene" id=1]
+
+[node name="mask_laughing_goblin" type="Spatial"]
+
+[node name="asset_laughing_goblin" parent="." instance=ExtResource( 1 )]

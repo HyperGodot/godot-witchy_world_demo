@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/masks/animal_mask.glb" type="PackedScene" id=1]
+
+[node name="asset_animal_mask" type="Spatial"]
+
+[node name="animal_mask" parent="." instance=ExtResource( 1 )]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/masks/ratface.glb" type="PackedScene" id=1]
+
+[node name="asset_ratface" type="Spatial"]
+
+[node name="ratface" parent="." instance=ExtResource( 1 )]
