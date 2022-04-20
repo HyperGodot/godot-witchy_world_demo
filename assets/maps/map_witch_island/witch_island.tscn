@@ -11,8 +11,8 @@
 [ext_resource path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" type="Script" id=9]
 [ext_resource path="res://assets/models/night_ghost/night_ghost.scn" type="PackedScene" id=10]
 [ext_resource path="res://assets/models/night_ghost/night_ghost.glb" type="PackedScene" id=11]
-[ext_resource path="res://assets/animal_mask.glb" type="PackedScene" id=12]
-[ext_resource path="res://assets/laughgoblin.glb" type="PackedScene" id=13]
+[ext_resource path="res://assets/masks/animal_mask.glb" type="PackedScene" id=12]
+[ext_resource path="res://assets/masks/laughgoblin.glb" type="PackedScene" id=13]
 [ext_resource path="res://assets/emit_blue.material" type="Material" id=14]
 [ext_resource path="res://addons/zylann.hterrain_demo/terrain_data/data.hterrain" type="Resource" id=15]
 [ext_resource path="res://assets/skull.tscn" type="PackedScene" id=16]
@@ -27,7 +27,7 @@
 [ext_resource path="res://addons/zylann.hterrain_demo/textures/grass/grass_billboard.png" type="Texture" id=25]
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot2_normal_roughness.packed_tex" type="Texture" id=26]
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot2_albedo_bump.packed_tex" type="Texture" id=27]
-[ext_resource path="res://assets/ratface.glb" type="PackedScene" id=28]
+[ext_resource path="res://assets/masks/ratface.glb" type="PackedScene" id=28]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
