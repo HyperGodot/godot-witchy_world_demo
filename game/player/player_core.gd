@@ -22,10 +22,12 @@ export var cameraLerpAmount : float = 40
 export var currentSpeed : float = 0
 
 onready var meshNode : Spatial = $Model
-onready var meshSkeletonNode : Skeleton = $Model/Armature/Skeleton
-onready var meshSkeletonHiddenHand : MeshInstance = $Model/Armature/Skeleton/player001
-onready var meshHandBone : int = meshSkeletonNode.find_bone("DEF-hand.R")
-onready var meshHandBonePos : Transform = meshSkeletonNode.get_bone_pose(meshHandBone)
+
+# Skeleton-specific VARs
+#onready var meshSkeletonNode : Skeleton = $Model/Armature/Skeleton
+#onready var meshSkeletonHiddenHand : MeshInstance = $Model/Armature/Skeleton/player001
+#onready var meshHandBone : int = meshSkeletonNode.find_bone("DEF-hand.R")
+#onready var meshHandBonePos : Transform = meshSkeletonNode.get_bone_pose(meshHandBone)
 
 onready var clippedCamera : Spatial = $CameraHead/CameraPivot/ClippedCamera
 onready var clippedCameraHead : Spatial = $CameraHead
