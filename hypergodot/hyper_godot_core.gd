@@ -68,6 +68,8 @@ func _on_HyperGossip_listening(_extension_name):
 
 # TODO : Get these out of here and into player_core or player_core_remote
 func _on_HyperGossip_event(type, data, from):
+	if data == null:
+		print("You got crap from :  " + str(from))
 	if type == EVENT_PLAYER_SNAPSHOT:
 		updatePlayerWithSnapshot(data, from)
 	elif type == EVENT_PLAYER_WANTSTOJUMP:
@@ -152,7 +154,7 @@ func updatePlayer_maskSwitch(data, id):
 func updatePlayer_mapchange(data, _id):
 	var newMapName = data.map.name
 	# TODO : Do this elsewhere
-	var playerDebugUI = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal").get_node("PlayerDebugUI")
+	var playerDebugUI = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal").get_node("PlayerDebugUI")
 	playerDebugUI.tryMapChange(newMapName, false)
 	
 func updatePlayer_respawnPlayer(data, id):
@@ -167,7 +169,7 @@ func updatePlayer_direction(data, id):
 	remotePlayer.playerCoreNetworkDataUpdate(data)
 
 func getPlayerLocalSnapshotData() -> Dictionary:
-	var snapshotPlayer : KinematicBody = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
+	var snapshotPlayer : KinematicBody = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
 	var translation : Vector3 = snapshotPlayer.translation
 	var meshDirection : Vector3 = Vector3(0, snapshotPlayer.meshNode.rotation.y, 0)
 	var lookingDirection : Vector3 = snapshotPlayer.currentDirection
