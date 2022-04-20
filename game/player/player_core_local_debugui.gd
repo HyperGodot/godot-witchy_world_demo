@@ -1,6 +1,6 @@
 extends Control
 
-onready var playerNode = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
+onready var playerNode = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
 
 onready var currentmapValue : Label = $Panel/MarginContainer/GridContainer/Current_Map_Value
 onready var inputValue : Label = $Panel/MarginContainer/GridContainer/Input_Value

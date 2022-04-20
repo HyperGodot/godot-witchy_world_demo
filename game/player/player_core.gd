@@ -15,6 +15,7 @@ const EVENT_PLAYER_RESPAWNPLAYER = 'player_respawnplayer'
 const EVENT_PLAYER_SHOOT_GRAPPLINGHOOK = 'player_shoot_grapplinghook'
 const EVENT_PLAYER_RELEASE_GRAPPLINGHOOK = 'player_release_grapplinghook'
 const EVENT_PLAYER_TOGGLE_LIGHT = 'player_toggle_light'
+const EVENT_PLAYER_MASK_SWITCH = 'player_mask_switch'
 
 export var mouseSensitivity : float = 0.3
 export var movementSpeed : float = 14
@@ -30,10 +31,11 @@ onready var meshNode : Spatial = $Model
 
 # Skeleton-specific VARs
 onready var meshSkeletonNode : Skeleton = $Model/rig/Skeleton
-onready var meshSkeletonHiddenHand : MeshInstance = $Model/rig/Skeleton/player000
 onready var meshFaceBone : int = meshSkeletonNode.find_bone("DEF-spine.006")
 onready var meshFaceBonePos : Transform = meshSkeletonNode.get_bone_pose(meshFaceBone)
 onready var meshMaskAttachment : BoneAttachment = $Model/rig/Skeleton/MaskAttachment
+
+var activeMeshMaskAttachment
 
 onready var clippedCamera : Spatial = $CameraHead/CameraPivot/ClippedCamera
 onready var clippedCameraHead : Spatial = $CameraHead
@@ -96,6 +98,9 @@ func snapShotUpdate(_translation : Vector3, _meshDirection : Vector3, _lookingDi
 
 func directionUpdate(_direction : Vector3):
 	self.currentDirection = _direction
+	
+func SetNewFoVTween(_newFoV : float):
+	pass
 	
 func getSpawnLocationForMapName(mapName : String) -> Vector3:
 	# Get Map Node
@@ -198,6 +203,11 @@ func _physics_process(_delta):
 	# Actually Movement
 	#velocityAmount = velocityAmount.linear_interpolate(currentDirection * movementSpeed, accelerationDefault * delta)
 	# finalMovement = velocityAmount + finalgravityVelociy
+	
+func maskSwitch(_newMaskName : String):
+	if(activeMeshMaskAttachment != null):
+		activeMeshMaskAttachment.free()
+	activeMeshMaskAttachment = maskAnimal.instance();
 	
 func respawnPlayer():
 	kinematicVelocity = Vector3.ZERO
@@ -308,7 +318,7 @@ func _on_MoveNetworkTimer_timeout():
 	
 func getPlayerLocalCoreNetworkData() -> Dictionary:
 	# TODO : Fix finding the local player, and get it out of player_core into player_core_local
-	var localPlayer : KinematicBody = get_tree().get_current_scene().get_node("Players").get_node("PlayerLocal")
+	var localPlayer : KinematicBody = get_tree().get_current_scene().get_node("Players").get_node("PlayerCoreLocal")
 	var translation : Vector3 = localPlayer.translation
 	var direction : Vector3 = localPlayer.currentDirection
 
