@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://addons/scatter/src/core/scatter_exclude_path.gd" type="Script" id=1]
 [ext_resource path="res://addons/scatter/src/core/scatter.gd" type="Script" id=2]
@@ -27,6 +27,8 @@
 [ext_resource path="res://addons/zylann.hterrain_demo/textures/grass/grass_billboard.png" type="Texture" id=25]
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot2_normal_roughness.packed_tex" type="Texture" id=26]
 [ext_resource path="res://addons/zylann.hterrain_demo/demo_slot2_albedo_bump.packed_tex" type="Texture" id=27]
+[ext_resource path="res://assets/models/pedestal/pedestal.glb" type="PackedScene" id=28]
+[ext_resource path="res://assets/shaders/Fire.tscn" type="PackedScene" id=29]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 8 )
@@ -178,7 +180,6 @@ shader_params/u_colormap_opacity_per_texture = Plane( 1, 1, 1, 1 )
 
 [node name="HTerrainDetailLayer" type="Spatial" parent="HTerrain"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6564, 4.60907, 20.7092 )
-visible = false
 script = ExtResource( 9 )
 texture = ExtResource( 25 )
 view_distance = 61.622
@@ -240,7 +241,6 @@ __meta__ = {
 
 [node name="Scatter" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.181, 10.0446, 1.706 )
-visible = false
 curve = SubResource( 7 )
 script = ExtResource( 2 )
 use_instancing = false
@@ -249,8 +249,7 @@ modifier_stack = Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process
 , Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process_priority":0,"script":Resource( "res://addons/scatter/src/modifiers/randomize_transforms.gd" ),"enabled":true,"display_name":"Randomize Transforms","category":"Edit","warning":"","warning_ignore_no_transforms":false,"warning_ignore_no_path":true,"override_global_seed":true,"custom_seed":-7,"local_space":true,"position":Vector3( 0.1, 0.1, 0.1 ),"rotation":Vector3( 5, 360, 5 ),"scale":Vector3( 0, 0, 0 ),"_rng":Object(RandomNumberGenerator,"seed":-675701067133473528,"state":9121945149035635975,"script":null)
 )
 , Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process_priority":0,"script":Resource( "res://addons/scatter/src/modifiers/project_on_floor.gd" ),"enabled":true,"display_name":"Project On Floor","category":"Edit","warning":"","warning_ignore_no_transforms":false,"warning_ignore_no_path":true,"ray_length":10.0,"ray_offset":1.0,"remove_points_on_miss":true,"align_with_floor_normal":false,"invert_ray_direction":false,"floor_direction":Vector3( 0, -1, 0 ),"max_slope":1.0,"mask":"1048575")
- ],"just_created":false,"undo_redo":Object(UndoRedo,"script":null)
-)
+ ],"just_created":false,"undo_redo":null)
 
 
 [node name="ScatterItem" type="Spatial" parent="Scatter"]
@@ -626,7 +625,7 @@ transform = Transform( 0.161576, 0.0119116, 0.391825, -0.0378244, 0.4223, 0.0027
 transform = Transform( -0.287873, -0.000350514, 0.311296, 0.0213296, 0.422981, 0.0202009, -0.310565, 0.0293752, -0.287163, 344.636, -3.82398, 386.534 )
 
 [node name="pine_tree_low_poly121" parent="Scatter/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( 0.359816, -0.0219618, 0.223218, 0.0408281, 0.421326, -0.0243596, -0.220549, 0.0421664, 0.359661, 125.911, -4.70231, 79.4263 )
+transform = Transform( 0.359816, -0.0219618, 0.223218, 0.0408281, 0.421326, -0.0243596, -0.220548, 0.0421664, 0.359661, 125.911, -4.70231, 79.4263 )
 
 [node name="pine_tree_low_poly122" parent="Scatter/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( 0.0679337, 0.00548298, -0.418487, -0.0049291, 0.423945, 0.00475435, 0.418493, 0.00410326, 0.0679886, 189.258, -0.314874, 162.346 )
@@ -732,7 +731,6 @@ transform = Transform( 0.305692, 0.0152203, -0.293422, -0.0316868, 0.422669, -0.
 
 [node name="Scatter3" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.181, 45.5965, 1.706 )
-visible = false
 curve = SubResource( 12 )
 script = ExtResource( 2 )
 use_instancing = false
@@ -741,8 +739,7 @@ modifier_stack = Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process
 , Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process_priority":0,"script":Resource( "res://addons/scatter/src/modifiers/randomize_transforms.gd" ),"enabled":true,"display_name":"Randomize Transforms","category":"Edit","warning":"","warning_ignore_no_transforms":false,"warning_ignore_no_path":true,"override_global_seed":true,"custom_seed":-7,"local_space":true,"position":Vector3( 0.1, -3, 0.1 ),"rotation":Vector3( 5, 360, 5 ),"scale":Vector3( 0, 0, 0 ),"_rng":Object(RandomNumberGenerator,"seed":7637503715800771448,"state":-2153122548448235849,"script":null)
 )
 , Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process_priority":0,"script":Resource( "res://addons/scatter/src/modifiers/project_on_floor.gd" ),"enabled":true,"display_name":"Project On Floor","category":"Edit","warning":"","warning_ignore_no_transforms":false,"warning_ignore_no_path":true,"ray_length":10.0,"ray_offset":1.0,"remove_points_on_miss":true,"align_with_floor_normal":false,"invert_ray_direction":false,"floor_direction":Vector3( 0, -1, 0 ),"max_slope":1.0,"mask":"1048575")
- ],"just_created":false,"undo_redo":Object(UndoRedo,"script":null)
-)
+ ],"just_created":false,"undo_redo":null)
 
 
 [node name="ScatterItem" type="Spatial" parent="Scatter3"]
@@ -875,7 +872,7 @@ transform = Transform( -0.0128577, -0.000675714, 0.423804, -0.00710339, 0.42394,
 transform = Transform( 0.101922, 0.00612874, -0.411522, -0.0169522, 0.423656, 0.00211088, 0.411218, 0.0159459, 0.102084, 294.577, -2.41509, 444.945 )
 
 [node name="pine_tree_low_poly40" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( 0.0308392, -0.000460162, -0.422877, 0.0383376, 0.422257, 0.00233637, 0.421136, -0.038406, 0.030754, 320.715, -4.06546, 374.833 )
+transform = Transform( 0.0308392, -0.000460159, -0.422877, 0.0383376, 0.422257, 0.00233637, 0.421136, -0.038406, 0.030754, 320.715, -4.06546, 374.833 )
 
 [node name="pine_tree_low_poly41" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( 0.0532052, 0.0038319, -0.420631, -0.0092953, 0.42389, 0.00268582, 0.420546, 0.00888442, 0.0532754, 131.894, -5.76264, 238.649 )
@@ -917,7 +914,7 @@ transform = Transform( -0.31824, -0.00402851, 0.280148, -0.0212566, 0.423081, -0
 transform = Transform( 0.42263, -0.0283138, 0.0189172, 0.0276952, 0.422857, 0.0141605, -0.0198118, -0.0128791, 0.423341, 152.328, -0.110828, 335.982 )
 
 [node name="pine_tree_low_poly54" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( 0.419564, -0.0294815, -0.0536031, 0.0324807, 0.422179, 0.022037, 0.0518407, -0.0259127, 0.42002, 159.635, 1.23309, 325.687 )
+transform = Transform( 0.419564, -0.0294815, -0.0536032, 0.0324807, 0.422179, 0.022037, 0.0518407, -0.0259127, 0.42002, 159.635, 1.23309, 325.687 )
 
 [node name="pine_tree_low_poly55" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( 0.16747, 0.0142112, 0.389266, -0.0490875, 0.42111, 0.00574471, -0.38642, -0.0473353, 0.167974, 99.3361, 0.809784, 336.627 )
@@ -992,7 +989,7 @@ transform = Transform( 0.0407202, 0.0022665, 0.422034, -0.0490658, 0.421144, 0.0
 transform = Transform( -0.280312, -0.00707842, -0.318042, -0.0284789, 0.422751, 0.0156916, 0.316844, 0.0317359, -0.279962, 176.5, -10.7221, 371.458 )
 
 [node name="pine_tree_low_poly79" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( -0.198251, -0.00821753, 0.374707, -0.0315729, 0.422757, -0.00743337, -0.373464, -0.0313779, -0.198282, 179.917, -3.31704, 357.657 )
+transform = Transform( -0.198251, -0.00821753, 0.374707, -0.0315729, 0.422757, -0.00743338, -0.373464, -0.0313779, -0.198282, 179.917, -3.31704, 357.657 )
 
 [node name="pine_tree_low_poly80" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( 0.362607, 0.00652282, -0.219658, -0.00224475, 0.423901, 0.0088823, 0.219743, -0.00643327, 0.362557, 130.226, -6.67784, 321.284 )
@@ -1499,7 +1496,7 @@ transform = Transform( -0.406948, 0.0157089, -0.117995, 0.01645, 0.423681, -0.00
 transform = Transform( 0.258635, 0.0217903, -0.335274, -0.0459698, 0.421423, -0.00807246, 0.332822, 0.0412743, 0.259426, 130.401, -1.37271, 175.259 )
 
 [node name="pine_tree_low_poly248" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( 0.413032, 0.0169847, -0.0942974, -0.0205545, 0.423277, -0.0137908, 0.0935842, 0.0180054, 0.413151, 93.4774, -7.87867, 179.069 )
+transform = Transform( 0.413032, 0.0169847, -0.0942975, -0.0205545, 0.423277, -0.0137908, 0.0935842, 0.0180054, 0.413151, 93.4774, -7.87867, 179.069 )
 
 [node name="pine_tree_low_poly249" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( 0.344939, 0.0221212, 0.245568, -0.0338739, 0.422538, 0.00951836, -0.244224, -0.0273623, 0.345517, 171.709, -2.45223, 349.399 )
@@ -1844,7 +1841,7 @@ transform = Transform( 0.155085, 0.00148407, -0.394617, 0.0267339, 0.422983, 0.0
 transform = Transform( 0.104658, -0.0062503, 0.410833, 0.00224353, 0.423953, 0.00587839, -0.410874, 0.000722867, 0.104679, 115.827, -9.24745, 361.874 )
 
 [node name="pine_tree_low_poly363" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( 0.0894423, 0.000952111, 0.414458, -0.0348381, 0.422516, 0.00654763, -0.412992, -0.0354352, 0.0892074, 104.389, -2.74653, 135.018 )
+transform = Transform( 0.0894423, 0.000952111, 0.414458, -0.0348381, 0.422516, 0.00654764, -0.412992, -0.0354352, 0.0892074, 104.389, -2.74653, 135.018 )
 
 [node name="pine_tree_low_poly364" parent="Scatter3/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( 0.317883, -0.0144399, -0.280211, 0.0053234, 0.423672, -0.0157937, 0.280532, 0.00832285, 0.317818, 99.1205, -7.09511, 116.711 )
@@ -2079,7 +2076,6 @@ transform = Transform( 0.345936, -0.00990223, 0.244961, -0.00642973, 0.423142, 0
 
 [node name="Scatter2" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 27.987, 1.642 )
-visible = false
 curve = SubResource( 14 )
 script = ExtResource( 2 )
 use_instancing = false
@@ -2088,8 +2084,7 @@ modifier_stack = Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process
 , Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process_priority":0,"script":Resource( "res://addons/scatter/src/modifiers/randomize_transforms.gd" ),"enabled":true,"display_name":"Randomize Transforms","category":"Edit","warning":"","warning_ignore_no_transforms":false,"warning_ignore_no_path":true,"override_global_seed":true,"custom_seed":-7,"local_space":true,"position":Vector3( 0.1, 0.1, 0.1 ),"rotation":Vector3( 5, 360, 5 ),"scale":Vector3( 0, 0, 0 ),"_rng":Object(RandomNumberGenerator,"seed":7637503715800771448,"state":-2153122548448235849,"script":null)
 )
 , Object(Node,"_import_path":NodePath(""),"pause_mode":0,"process_priority":0,"script":Resource( "res://addons/scatter/src/modifiers/project_on_floor.gd" ),"enabled":true,"display_name":"Project On Floor","category":"Edit","warning":"","warning_ignore_no_transforms":false,"warning_ignore_no_path":true,"ray_length":10.0,"ray_offset":1.0,"remove_points_on_miss":true,"align_with_floor_normal":false,"invert_ray_direction":false,"floor_direction":Vector3( 0, -1, 0 ),"max_slope":1.0,"mask":"1048575")
- ],"just_created":false,"undo_redo":Object(UndoRedo,"script":null)
-)
+ ],"just_created":false,"undo_redo":null)
 
 
 [node name="ScatterItem" type="Spatial" parent="Scatter2"]
@@ -3044,7 +3039,7 @@ transform = Transform( 0.259654, -0.00912148, 0.335071, 0.0255009, 0.423152, -0.
 transform = Transform( 0.394032, -0.0343085, -0.152767, 0.0293415, 0.422547, -0.0192153, 0.153799, 0.00728538, 0.395056, 322.658, 3.5054, 351.991 )
 
 [node name="pine_tree_low_poly314" parent="Scatter2/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( 0.413032, 0.0169847, -0.0942974, -0.0205545, 0.423277, -0.0137908, 0.0935842, 0.0180054, 0.413151, 187.971, -2.95747, 296.78 )
+transform = Transform( 0.413032, 0.0169847, -0.0942975, -0.0205545, 0.423277, -0.0137908, 0.0935842, 0.0180054, 0.413151, 187.971, -2.95747, 296.78 )
 
 [node name="pine_tree_low_poly315" parent="Scatter2/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( 0.119565, -0.0081744, 0.40671, 0.00488836, 0.423913, 0.00708306, -0.406763, 0.00269165, 0.119635, 157.401, -2.14618, 239.921 )
@@ -3221,7 +3216,7 @@ transform = Transform( 0.273425, -0.0216927, -0.323333, 0.0565535, 0.419751, 0.0
 transform = Transform( -0.253425, -0.00450058, -0.339899, -0.00707384, 0.423941, -0.000339198, 0.339856, 0.005468, -0.253465, 163.194, 1.42666, 264.972 )
 
 [node name="pine_tree_low_poly373" parent="Scatter2/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( 0.288714, 0.0194376, -0.309907, -0.0203345, 0.423444, 0.00761475, 0.309849, 0.0096776, 0.289268, 185.287, 0.515503, 384.348 )
+transform = Transform( 0.288715, 0.0194376, -0.309907, -0.0203345, 0.423444, 0.00761475, 0.309849, 0.0096776, 0.289268, 185.287, 0.515503, 384.348 )
 
 [node name="pine_tree_low_poly374" parent="Scatter2/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( -0.250189, -0.00254164, -0.342308, -0.0281088, 0.422709, 0.0174058, 0.341162, 0.0329637, -0.249596, 69.9587, -1.82635, 150.099 )
@@ -3332,7 +3327,7 @@ transform = Transform( 0.420386, 0.00279187, -0.0551691, -0.00422862, 0.423842, 
 transform = Transform( 0.360477, 0.0252092, 0.221804, -0.0423825, 0.421354, 0.0209911, -0.219171, -0.0400174, 0.360747, 319.557, 3.02456, 346.85 )
 
 [node name="pine_tree_low_poly410" parent="Scatter2/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( 0.402002, 0.0298418, 0.131454, -0.0325189, 0.422737, 0.00347994, -0.130817, -0.0133813, 0.403093, 125.854, 1.61266, 142.481 )
+transform = Transform( 0.402002, 0.0298418, 0.131454, -0.0325189, 0.422737, 0.00347995, -0.130817, -0.0133813, 0.403093, 125.854, 1.61266, 142.481 )
 
 [node name="pine_tree_low_poly411" parent="Scatter2/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( 0.421728, 0.012996, 0.0418639, -0.0127194, 0.423795, -0.00342806, -0.0419488, 0.00215383, 0.421914, 329.213, -0.608349, 342.824 )
@@ -3605,7 +3600,7 @@ transform = Transform( -0.401771, -0.0203674, -0.133946, -0.0277066, 0.422674, 0
 transform = Transform( -0.0199023, 0.000512618, 0.423532, 0.0177659, 0.423628, 0.000322109, -0.42316, 0.0177615, -0.0199063, 84.2958, -3.49413, 121.361 )
 
 [node name="pine_tree_low_poly501" parent="Scatter2/ScatterItem/Duplicates" instance=ExtResource( 6 )]
-transform = Transform( -0.312774, -0.00292363, -0.286251, -0.0242028, 0.42273, 0.0221277, 0.285241, 0.0326628, -0.312004, 335.343, -2.43354, 455.105 )
+transform = Transform( -0.312774, -0.00292363, -0.286252, -0.0242028, 0.42273, 0.0221277, 0.285241, 0.0326628, -0.312004, 335.343, -2.43354, 455.105 )
 
 [node name="pine_tree_low_poly502" parent="Scatter2/ScatterItem/Duplicates" instance=ExtResource( 6 )]
 transform = Transform( -0.111726, -0.00330196, -0.409002, 0.0218789, 0.423331, -0.00939421, 0.40843, -0.0235803, -0.111379, 147.875, -1.23943, 243.103 )
@@ -3923,7 +3918,6 @@ __meta__ = {
 
 [node name="Scatter4" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.579, 0 )
-visible = false
 curve = SubResource( 21 )
 script = ExtResource( 2 )
 use_instancing = false
@@ -4343,7 +4337,7 @@ __meta__ = {
 }
 
 [node name="light_post13" type="Spatial" parent="Scatter4/ScatterItem/Duplicates"]
-transform = Transform( -0.4109, 0.0335895, -0.911061, 0, 0.999321, 0.0368435, 0.91168, 0.015139, -0.410621, 223.582, -2.18549, 276.813 )
+transform = Transform( -0.4109, 0.0335895, -0.911061, 0, 0.999321, 0.0368435, 0.91168, 0.015139, -0.410621, 223.582, -2.18549, 276.812 )
 
 [node name="Cube" type="MeshInstance" parent="Scatter4/ScatterItem/Duplicates/light_post13"]
 mesh = SubResource( 17 )
@@ -4645,7 +4639,6 @@ script = ExtResource( 1 )
 
 [node name="Scatter6" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.579, 0 )
-visible = false
 curve = SubResource( 24 )
 script = ExtResource( 2 )
 use_instancing = false
@@ -5169,7 +5162,6 @@ script = ExtResource( 1 )
 
 [node name="Scatter5" type="Path" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.579, 0 )
-visible = false
 curve = SubResource( 23 )
 script = ExtResource( 2 )
 use_instancing = false
@@ -7381,14 +7373,38 @@ transform = Transform( -2.834, 0.021408, -4.11922, -0.963323, 4.85784, 0.688006,
 stream = ExtResource( 21 )
 autoplay = true
 
+[node name="pedestal" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 207.262, 22.4978, 274.12 )
+
+[node name="pedestal4" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 215.249, 22.4978, 289.498 )
+
+[node name="pedestal3" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 198.682, 22.4978, 283.284 )
+
+[node name="pedestal2" parent="." instance=ExtResource( 28 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 217.473, 22.4978, 282.737 )
+
 [node name="asset_laughing_goblin" parent="." instance=ExtResource( 10 )]
-transform = Transform( 0.909447, 0, 0.415821, 0, 1, 0, -0.415821, 0, 0.909447, 172.257, 17.2132, 172.623 )
+transform = Transform( 0.909447, 0, 0.415821, 0, 1, 0, -0.415821, 0, 0.909447, 207.304, 24.9699, 274.073 )
 
 [node name="asset_animal_mask" parent="." instance=ExtResource( 11 )]
-transform = Transform( 0.909447, 0, 0.415821, 0, 1, 0, -0.415821, 0, 0.909447, 172.814, 17.4944, 175.431 )
+transform = Transform( 0.99986, 0, 0.0167372, 0, 1, 0, -0.0167372, 0, 0.99986, 217.54, 24.6245, 282.759 )
 
 [node name="asset_ratface" parent="." instance=ExtResource( 12 )]
-transform = Transform( 0.894146, 0, 0.447775, 0, 1, 0, -0.447775, 0, 0.894146, 171.951, 17.2507, 169.623 )
+transform = Transform( 0.966165, 0, -0.257925, 0, 1, 0, 0.257925, 0, 0.966165, 198.87, 24.5303, 282.999 )
 
 [node name="asset_skull" parent="." instance=ExtResource( 13 )]
-transform = Transform( -0.220476, 0, 0.975392, 0, 1, 0, -0.975392, 0, -0.220476, 172.194, 17.3353, 167.855 )
+transform = Transform( 0.985682, 0, -0.16861, 0, 1, 0, 0.16861, 0, 0.985682, 215.262, 25.1858, 289.518 )
+
+[node name="Fire" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 217.482, 26.7895, 282.505 )
+
+[node name="Fire2" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 215.253, 26.7895, 289.535 )
+
+[node name="Fire3" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 198.707, 26.7895, 283.324 )
+
+[node name="Fire4" parent="." instance=ExtResource( 29 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 207.184, 26.7895, 273.985 )
