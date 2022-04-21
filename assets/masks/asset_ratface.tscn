@@ -13,5 +13,5 @@ radius = 0.05
 transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -0.012169 )
 
 [node name="CollisionShape" type="CollisionShape" parent="ratface/StaticBody"]
-transform = Transform( 1.0401, 0, 0, 0, 0.686402, 0, 0, 0, 0.650173, 0, 0.0282457, 0 )
+transform = Transform( 0.702435, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0282457, 0.00615473 )
 shape = SubResource( 1 )

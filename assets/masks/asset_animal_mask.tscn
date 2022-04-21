@@ -12,5 +12,5 @@ radius = 0.05
 [node name="StaticBody" type="StaticBody" parent="animal_mask"]
 
 [node name="CollisionShape" type="CollisionShape" parent="animal_mask/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0420572, 0 )
+transform = Transform( 8.48619, 0, 0, 0, 8.12711, 0, 0, 0, 10, -0.024631, 0.41426, 0 )
 shape = SubResource( 1 )

@@ -12,5 +12,5 @@ radius = 0.05
 [node name="StaticBody" type="StaticBody" parent="laughgoblin"]
 
 [node name="CollisionShape" type="CollisionShape" parent="laughgoblin/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1.18081, 0, 0, 0, 0.862485, 0, 0.05603, -0.00598833 )
+transform = Transform( 8, 0, 0, 0, 8.9737, 0, 0, 0, 8, 0, 0.441673, -0.00598833 )
 shape = SubResource( 1 )
