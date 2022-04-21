@@ -9,8 +9,9 @@ radius = 0.05
 
 [node name="animal_mask" parent="." instance=ExtResource( 1 )]
 
-[node name="StaticBody" type="StaticBody" parent="animal_mask"]
+[node name="Area" type="Area" parent="animal_mask"]
 
-[node name="CollisionShape" type="CollisionShape" parent="animal_mask/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="animal_mask/Area"]
 transform = Transform( 8.48619, 0, 0, 0, 8.12711, 0, 0, 0, 10, -0.024631, 0.41426, 0 )
 shape = SubResource( 1 )
+disabled = true

@@ -17,6 +17,7 @@ const EVENT_PLAYER_SHOOT_GRAPPLINGHOOK = 'player_shoot_grapplinghook'
 const EVENT_PLAYER_RELEASE_GRAPPLINGHOOK = 'player_release_grapplinghook'
 const EVENT_PLAYER_TOGGLE_LIGHT = 'player_toggle_light'
 const EVENT_PLAYER_MASK_SWITCH = 'player_mask_switch'
+const EVENT_PLAYER_REMOVE_MASK = 'player_remove_mask'
 
 var PlayerCoreLocal = preload("res://game/player/player_core_local.tscn")
 var PlayerCoreRemote = preload("res://game/player/player_core_remote.tscn")
@@ -88,6 +89,8 @@ func _on_HyperGossip_event(type, data, from):
 		updatePlayer_toggleLight(data, from)
 	elif type == EVENT_PLAYER_MASK_SWITCH:
 		updatePlayer_maskSwitch(data, from)
+	elif type == EVENT_PLAYER_REMOVE_MASK:
+		updatePlayer_removeMask(data, from)
 	
 func get_player_object(id):
 	if knownPlayers.has(id):
@@ -144,6 +147,12 @@ func updatePlayer_toggleLight(data, id):
 	
 	remotePlayer.playerCoreNetworkDataUpdate(data)
 	remotePlayer.playerWantsToToggleLight = true
+	
+func updatePlayer_removeMask(data, id):
+	var remotePlayer = get_player_object(id)
+	
+	remotePlayer.playerCoreNetworkDataUpdate(data)
+	remotePlayer.newMaskName = 'DELETE'
 	
 func updatePlayer_maskSwitch(data, id):
 	var remotePlayer = get_player_object(id)

@@ -66,6 +66,9 @@ var playerWantsToJump : bool = false
 var playerWantsNewWorldEnvironment : bool = true
 var playerWantsToToggleLight : bool = false
 
+var newMaskName : String = ""
+var playersWantsToSwitchMask : bool = false
+
 var f_input : float
 var h_input : float
 
@@ -88,8 +91,8 @@ func _ready():
 	# Get HyperGossip
 	hyperGossip = get_tree().get_current_scene().get_node("HyperGodot").get_node("HyperGossip")
 	
-	var newMask = maskAnimal.instance()
-	meshMaskAttachment.add_child(newMask)
+	#var newMask = maskAnimal.instance()
+	#meshMaskAttachment.add_child(newMask)
 	
 func snapShotUpdate(_translation : Vector3, _meshDirection : Vector3, _lookingDirection : Vector3):
 	self.translation = _translation
@@ -126,6 +129,11 @@ func _physics_process(_delta):
 	if(playerWantsNewWorldEnvironment):
 		playerWantsNewWorldEnvironment = false
 		currentMap.updateMapWorldEnvironmentScene()
+		
+	# Check for New Mask
+	if(newMaskName) != "":
+		mask_PlayerSwitchToNewMask(newMaskName)
+		newMaskName = ""
 		
 	# Check for Toggle Light
 	if(playerWantsToToggleLight):
@@ -204,10 +212,41 @@ func _physics_process(_delta):
 	#velocityAmount = velocityAmount.linear_interpolate(currentDirection * movementSpeed, accelerationDefault * delta)
 	# finalMovement = velocityAmount + finalgravityVelociy
 	
-func maskSwitch(_newMaskName : String):
+func mask_GetMaskNodeFromMaskName(_maskName : String) -> PackedScene:
+	if _maskName == "mask_animal" : return maskAnimal
+	elif _maskName == "mask_laughing_goblin" : return maskLaughingGoblin
+	elif _maskName == "mask_ratface" : return maskRatface
+	elif _maskName == "mask_skull" : return maskSkull
+	else: return maskAnimal
+	
+func mask_PlayerSwitchToNewMask(_newMaskName : String):
+	var newMask : bool = true
 	if(activeMeshMaskAttachment != null):
-		activeMeshMaskAttachment.free()
-	activeMeshMaskAttachment = maskAnimal.instance();
+		var _name = activeMeshMaskAttachment.name
+		if( _newMaskName.nocasecmp_to("DELETE") == 0):
+			newMask = false
+			newMaskName = ""
+			# Remove Current Mask
+			activeMeshMaskAttachment.free()
+			return
+		if( _newMaskName.nocasecmp_to(_name) == 0):
+			newMask = false
+			newMaskName = ""
+			return
+		else:
+			# Remove Current Mask
+			activeMeshMaskAttachment.free()
+			
+	if(newMask):
+		# Get an Instance of the New Mask
+		activeMeshMaskAttachment = mask_GetMaskNodeFromMaskName(_newMaskName).instance()
+		# Disable Collision Shape
+		activeMeshMaskAttachment.DisableCollisionShape()
+		# Add as Child to the Mask Attachment
+		meshMaskAttachment.add_child(activeMeshMaskAttachment)
+	
+func mask_SetNewMaskName(_maskName : String):
+	newMaskName = _maskName
 	
 func respawnPlayer():
 	kinematicVelocity = Vector3.ZERO

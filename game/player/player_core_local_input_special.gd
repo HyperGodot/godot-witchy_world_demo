@@ -22,6 +22,9 @@ func _input(_event):
 			Engine.set_time_scale(1.0)
 		else:
 			Engine.set_time_scale(0.1)
+	if Input.is_action_just_pressed("toggleScatters"):
+		var mapNode = get_tree().get_current_scene().get_node("Maps").find_node("*", true, false)
+		mapNode.toggleScatterAreaVisibility()
 
 func _process(_delta):
 	pass

@@ -166,3 +166,4 @@ func _init_vars() -> void:
 	_points = []
 	_spawn_points = []
 	_spawn_points.append(_start_pos)
+	

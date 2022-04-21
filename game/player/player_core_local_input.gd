@@ -10,6 +10,7 @@ signal player_jump()
 # signal player_roll()
 signal player_move(inputDirection)
 signal player_toggle_light()
+signal player_remove_mask()
 # signal player_shoot()
 
 var previousInputDirection : Vector3 = Vector3.ZERO
@@ -57,6 +58,9 @@ func _input(event : InputEvent):
 		
 	if event.is_action_pressed("toggleLight"):
 		emit_signal("player_toggle_light")
+		
+	if event.is_action_pressed("removeMask"):
+		emit_signal("removeMask")
 		
 	#if Input.is_action_pressed("forward") ||  Input.is_action_pressed("backward") ||  Input.is_action_pressed("left") ||  Input.is_action_pressed("right"):
 	#	movementDirection = Vector3.ZERO

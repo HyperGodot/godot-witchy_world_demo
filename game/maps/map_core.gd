@@ -3,6 +3,10 @@ extends Spatial
 onready var playerSpawnNodes : Node = find_node("PlayerSpawnNodes")
 
 export(String) var map_name : String = ""
+export(NodePath) var map_asset_node : NodePath
+
+var scatterAreas : Array
+var scatterAreasFound = false
 
 func _ready():
 	randomize()
@@ -10,6 +14,31 @@ func _ready():
 
 func _process(_delta):
 	pass
+	
+func toggleScatterAreaVisibility():
+	if(!scatterAreasFound):
+		getListOfScatterNodes(self, 0)
+		scatterAreasFound = true
+		
+	var numAreas : int = scatterAreas.size()
+	
+	for cnt in range(0, numAreas):
+		# scatterAreas[cnt].visible = !scatterAreas[cnt].visible
+		if(scatterAreas[cnt] == null):
+			scatterAreas[cnt].free()
+		
+func getListOfScatterNodes(_Node, indentLevel : int):
+	var _strIndents : String = ""
+	for _i in range(indentLevel):
+		_strIndents += "\t"
+		
+	if( str(_Node.name).begins_with("Scatter") and (str(_Node.name).length() == 7 or (str(_Node.name).length() == 8) ) ):
+		# scatterAreas.append(_Node)
+		_Node.free()
+		
+	var childCount = _Node.get_child_count()
+	for i in range(childCount):
+		getListOfScatterNodes(_Node.get_child(i), indentLevel + 1)
 	
 func getSpawnLocation() -> Vector3:
 	var childCount : int = playerSpawnNodes.get_child_count()
@@ -31,9 +60,6 @@ func updateMapWorldEnvironmentScene():
 		add_child(worldEnvironment.instance())
 
 func addGrapplingHookCollisionMaskToMap():
-	var _name = self.name
-	# var currentMap : Node = get_tree().get_current_scene().get_node("Maps").find_node(_name, true, false)
-	# var assetMap : Spatial = currentMap.find_node("asset_" + currentMap.name)
 	checkAndSetChildrenGrapplingHookMask(self, 0)
 				
 func checkAndSetChildrenGrapplingHookMask(var _Node, indentLevel : int):
