@@ -1,28 +1,16 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/models/night_ghost/night_ghost.scn" type="PackedScene" id=1]
-[ext_resource path="res://assets/models/tumble/tumble/sprint-loop.tres" type="Animation" id=2]
-[ext_resource path="res://assets/models/tumble/tumble/run-loop.tres" type="Animation" id=3]
-[ext_resource path="res://assets/models/tumble/tumble/landing.tres" type="Animation" id=4]
-[ext_resource path="res://game/player/player_local_core.tres" type="AnimationNodeBlendTree" id=5]
-[ext_resource path="res://assets/models/tumble/tumble/idle-loop.tres" type="Animation" id=6]
-[ext_resource path="res://assets/models/tumble/tumble/falling-loop.tres" type="Animation" id=7]
-[ext_resource path="res://assets/models/tumble/tumble/dive-roll.tres" type="Animation" id=8]
-[ext_resource path="res://assets/models/tumble/tumble/default.tres" type="Animation" id=9]
-[ext_resource path="res://assets/models/tumble/tumble/jump.tres" type="Animation" id=10]
-[ext_resource path="res://assets/models/tumble/tumble/strafe-left-loop.tres" type="Animation" id=11]
-[ext_resource path="res://assets/models/tumble/tumble/walk-backward-loop.tres" type="Animation" id=12]
-[ext_resource path="res://assets/models/tumble/tumble/walk-diagonal-left-back-loop.tres" type="Animation" id=13]
-[ext_resource path="res://assets/models/tumble/tumble/strafe-right-loop.tres" type="Animation" id=14]
-[ext_resource path="res://assets/models/tumble/tumble/walk-forward-loop.tres" type="Animation" id=15]
-[ext_resource path="res://assets/models/tumble/tumble/walk-diagonal-left-loop.tres" type="Animation" id=16]
-[ext_resource path="res://assets/models/tumble/tumble/walk-diagonal-right-back-loop.tres" type="Animation" id=17]
-[ext_resource path="res://assets/models/tumble/tumble/walk-diagonal-right-loop.tres" type="Animation" id=18]
-[ext_resource path="res://assets/models/tumble/tumble/wall_grab_f-loop.tres" type="Animation" id=19]
-[ext_resource path="res://assets/models/tumble/tumble/wall_grab_l-loop.tres" type="Animation" id=20]
-[ext_resource path="res://assets/models/tumble/tumble/wall_grab_r-loop.tres" type="Animation" id=21]
-[ext_resource path="res://assets/models/tumble/tumble/wall_run_r-loop.tres" type="Animation" id=22]
-[ext_resource path="res://assets/models/tumble/tumble/wall_run_l-loop.tres" type="Animation" id=23]
+[ext_resource path="res://assets/models/night_ghost/night_ghost_anim_tree.res" type="AnimationNodeBlendTree" id=2]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/running-loop.tres" type="Animation" id=3]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/jump.tres" type="Animation" id=4]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/idle-loop.tres" type="Animation" id=5]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/walk-loop.tres" type="Animation" id=6]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/landing.tres" type="Animation" id=7]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/falling-loop.tres" type="Animation" id=8]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/walk_forward-loop.tres" type="Animation" id=9]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/run-loop.tres" type="Animation" id=10]
+[ext_resource path="res://assets/models/night_ghost/night_ghost/run_forward_loop.tres" type="Animation" id=11]
 [ext_resource path="res://game/player/player_core.gd" type="Script" id=24]
 [ext_resource path="res://assets/sounds/player/generic_robot_jump.wav" type="AudioStream" id=25]
 [ext_resource path="res://assets/sounds/player/metal_footstep_3.wav" type="AudioStream" id=26]
@@ -42,6 +30,7 @@ radius = 0.3
 script = ExtResource( 24 )
 
 [node name="Model" parent="." instance=ExtResource( 1 )]
+transform = Transform( 5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0 )
 
 [node name="Sound_Jump" type="AudioStreamPlayer3D" parent="Model"]
 stream = ExtResource( 25 )
@@ -85,48 +74,29 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("")
-anims/default = ExtResource( 9 )
-anims/dive-roll = ExtResource( 8 )
-anims/falling-loop = ExtResource( 7 )
-anims/idle-loop = ExtResource( 6 )
-anims/jump = ExtResource( 10 )
-anims/landing = ExtResource( 4 )
-anims/run-loop = ExtResource( 3 )
-anims/sprint-loop = ExtResource( 2 )
-anims/strafe-left-loop = ExtResource( 11 )
-anims/strafe-right-loop = ExtResource( 14 )
-anims/walk-backward-loop = ExtResource( 12 )
-anims/walk-diagonal-left-back-loop = ExtResource( 13 )
-anims/walk-diagonal-left-loop = ExtResource( 16 )
-anims/walk-diagonal-right-back-loop = ExtResource( 17 )
-anims/walk-diagonal-right-loop = ExtResource( 18 )
-anims/walk-forward-loop = ExtResource( 15 )
-anims/wall_grab_f-loop = ExtResource( 19 )
-anims/wall_grab_l-loop = ExtResource( 20 )
-anims/wall_grab_r-loop = ExtResource( 21 )
-anims/wall_run_l-loop = ExtResource( 23 )
-anims/wall_run_r-loop = ExtResource( 22 )
+root_node = NodePath("../Model")
+anims/falling-loop = ExtResource( 8 )
+anims/idle-loop = ExtResource( 5 )
+anims/jump = ExtResource( 4 )
+anims/landing = ExtResource( 7 )
+anims/run-loop = ExtResource( 10 )
+anims/run_forward_loop = ExtResource( 11 )
+anims/running-loop = ExtResource( 3 )
+anims/walk-loop = ExtResource( 6 )
+anims/walk_forward-loop = ExtResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = ExtResource( 5 )
+tree_root = ExtResource( 2 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/Blend2/blend_amount = 0
-"parameters/Blend2 2/blend_amount" = 0
-"parameters/TimeScale 3/scale" = 1.0
-parameters/aim_transition/current = 1
-parameters/air_blend/blend_amount = 0
-parameters/air_transition/current = 1
+active = true
+parameters/Blend3/blend_amount = 0
+parameters/Transition/current = 1
 parameters/falling_scale/scale = 1.0
-parameters/iwr_blend/blend_amount = 0.0
+parameters/iwr_blend/blend_amount = -1.0
 parameters/jump_scale/scale = 2.0
 parameters/landing_scale/scale = 1.0
-parameters/roll/active = false
-parameters/roll_scale/scale = 1.0
 parameters/run_scale/scale = 1.0
-parameters/strafe/blend_position = Vector2( 0, 0 )
 parameters/walk_scale/scale = 1.0
-parameters/wall_run/current = 2
 
 [node name="MoveNetworkTimer" type="Timer" parent="."]
 wait_time = 0.1
