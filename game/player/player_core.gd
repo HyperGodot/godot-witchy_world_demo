@@ -239,7 +239,6 @@ func mask_PlayerSwitchToNewMask(_newMaskName : String):
 			newMaskName = ""
 			# Remove Current Mask
 			activeMeshMaskAttachment.free()
-			activeMeshMaskAttachment = null
 			
 	if(newMask and _newMaskName.nocasecmp_to("DELETE") != 0):
 		# Get an Instance of the New Mask
