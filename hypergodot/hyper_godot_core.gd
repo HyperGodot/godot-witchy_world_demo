@@ -152,7 +152,7 @@ func updatePlayer_removeMask(data, id):
 	var remotePlayer = get_player_object(id)
 	
 	remotePlayer.playerCoreNetworkDataUpdate(data)
-	remotePlayer.newMaskName = 'DELETE'
+	remotePlayer.newMaskName = "DELETE"
 	
 func updatePlayer_maskSwitch(data, id):
 	var remotePlayer = get_player_object(id)

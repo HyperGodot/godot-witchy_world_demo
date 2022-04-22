@@ -16,6 +16,7 @@ const EVENT_PLAYER_SHOOT_GRAPPLINGHOOK = 'player_shoot_grapplinghook'
 const EVENT_PLAYER_RELEASE_GRAPPLINGHOOK = 'player_release_grapplinghook'
 const EVENT_PLAYER_TOGGLE_LIGHT = 'player_toggle_light'
 const EVENT_PLAYER_MASK_SWITCH = 'player_mask_switch'
+const EVENT_PLAYER_REMOVE_MASK = 'player_remove_mask'
 
 export var mouseSensitivity : float = 0.3
 export var movementSpeed : float = 14
@@ -221,23 +222,26 @@ func mask_GetMaskNodeFromMaskName(_maskName : String) -> PackedScene:
 	
 func mask_PlayerSwitchToNewMask(_newMaskName : String):
 	var newMask : bool = true
-	if(activeMeshMaskAttachment != null):
+	if( is_instance_valid(activeMeshMaskAttachment) ):
 		var _name = activeMeshMaskAttachment.name
+		# Check for Keyword for Mask to Delete
 		if( _newMaskName.nocasecmp_to("DELETE") == 0):
 			newMask = false
 			newMaskName = ""
 			# Remove Current Mask
 			activeMeshMaskAttachment.free()
-			return
-		if( _newMaskName.nocasecmp_to(_name) == 0):
+		# Check for Same Mask
+		elif( _newMaskName.nocasecmp_to(_name) == 0):
 			newMask = false
 			newMaskName = ""
-			return
 		else:
+			newMask = false
+			newMaskName = ""
 			# Remove Current Mask
 			activeMeshMaskAttachment.free()
+			activeMeshMaskAttachment = null
 			
-	if(newMask):
+	if(newMask and _newMaskName.nocasecmp_to("DELETE") != 0):
 		# Get an Instance of the New Mask
 		activeMeshMaskAttachment = mask_GetMaskNodeFromMaskName(_newMaskName).instance()
 		# Disable Collision Shape
@@ -394,4 +398,5 @@ func playerCoreNetworkDataUpdate_Types(_translation : Vector3, _currentDirection
 
 
 func _on_Input_player_remove_mask():
-	pass # Replace with function body.
+	newMaskName = "DELETE"
+	hyperGossip.broadcast_event(EVENT_PLAYER_REMOVE_MASK, getPlayerLocalCoreNetworkData() )
