@@ -391,3 +391,7 @@ func playerCoreNetworkDataUpdate_Types(_translation : Vector3, _currentDirection
 	self.translation = _translation
 	self.currentDirection = _currentDirection
 	self.kinematicVelocity = _kinematicVelocity
+
+
+func _on_Input_player_remove_mask():
+	pass # Replace with function body.

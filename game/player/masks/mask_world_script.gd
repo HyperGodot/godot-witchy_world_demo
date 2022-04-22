@@ -35,7 +35,8 @@ func getMaskName() -> String:
 	return self.name.substr(4, -1)
 	
 func DisableCollisionShape():
-	collisionShape.disabled = true
+	#collisionShape.disabled = true
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -34,5 +34,6 @@ far = 8192.0
 [connection signal="player_jump" from="Input" to="." method="_on_Input_player_jump"]
 [connection signal="player_mousemotion_event" from="Input" to="." method="_on_Input_player_mousemotion_event"]
 [connection signal="player_move" from="Input" to="." method="_on_Input_player_move"]
+[connection signal="player_remove_mask" from="Input" to="." method="_on_Input_player_remove_mask"]
 [connection signal="player_restore_origin" from="Input" to="." method="_on_Input_player_restore_origin"]
 [connection signal="player_toggle_light" from="Input" to="." method="_on_Input_player_toggle_light"]
