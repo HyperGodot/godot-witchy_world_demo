@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/player/player_core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/player/player_core_local_input.gd" type="Script" id=2]
 [ext_resource path="res://game/player/player_core_local_input_special.gd" type="Script" id=3]
+[ext_resource path="res://assets/shaders/HeadFire.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/player/player_core_local_debugui.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sounds/player/fire_grapplinghook1.mp3" type="AudioStream" id=9]
 
@@ -33,6 +34,14 @@ fov = 90.0
 far = 8192.0
 
 [node name="PlayerDebugUI" parent="." index="7" instance=ExtResource( 5 )]
+
+[node name="OmniLight" parent="." index="9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73959, 0 )
+light_color = Color( 1, 0.901961, 0.560784, 1 )
+omni_attenuation = 4.75683
+
+[node name="Fire" parent="OmniLight" index="0" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123843, 0 )
 
 [connection signal="player_jump" from="Input" to="." method="_on_Input_player_jump"]
 [connection signal="player_mousemotion_event" from="Input" to="." method="_on_Input_player_mousemotion_event"]
