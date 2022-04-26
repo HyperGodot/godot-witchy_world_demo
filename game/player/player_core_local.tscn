@@ -63,10 +63,12 @@ far = 8192.0
 [node name="OmniLight" parent="." index="9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73959, 0 )
 light_color = Color( 1, 0.901961, 0.560784, 1 )
+omni_range = 10.0
 omni_attenuation = 4.75683
 
 [node name="Fire" parent="OmniLight" index="0" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123843, 0 )
+local_coords = true
 
 [connection signal="player_jump" from="Input" to="." method="_on_Input_player_jump"]
 [connection signal="player_mousemotion_event" from="Input" to="." method="_on_Input_player_mousemotion_event"]

@@ -29,6 +29,7 @@ curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
 lifetime_randomness = 0.81
+trail_divisor = 45
 direction = Vector3( 0, 1, 0 )
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
@@ -43,12 +44,11 @@ color_ramp = SubResource( 3 )
 size = Vector2( 0.5, 0.5 )
 
 [node name="Fire" type="Particles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.26708, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133423, 1.26708, 0 )
 material_override = SubResource( 1 )
 cast_shadow = 0
 amount = 50
 randomness = 0.74
-local_coords = false
 draw_order = 1
 process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 7 )
