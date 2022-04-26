@@ -122,8 +122,8 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1441
-window/size/height=728
+window/size/width=1440
+window/size/height=810
 
 [editor_plugins]
 
@@ -133,6 +133,7 @@ enabled=PoolStringArray( "res://addons/jc.godot.time-of-day/plugin.cfg", "res://
 
 debanding=false
 refra=false
+GI=false
 
 [input]
 
