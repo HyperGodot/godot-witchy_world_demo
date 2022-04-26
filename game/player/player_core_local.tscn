@@ -42,6 +42,9 @@ stream = ExtResource( 11 )
 stream = ExtResource( 12 )
 attenuation_model = 3
 
+[node name="AnimationTree" parent="." index="3"]
+parameters/air_transition/current = 0
+
 [node name="Input" type="Node" parent="." index="4"]
 script = ExtResource( 2 )
 

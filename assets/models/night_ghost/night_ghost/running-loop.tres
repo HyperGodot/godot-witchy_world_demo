@@ -1,4 +1,7 @@
-[gd_resource type="Animation" format=2]
+[gd_resource type="Animation" load_steps=3 format=2]
+
+[ext_resource path="res://assets/sounds/player/step_left.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/sounds/player/step_right.mp3" type="AudioStream" id=2]
 
 [resource]
 resource_name = "running-loop"
@@ -228,3 +231,31 @@ tracks/31/loop_wrap = true
 tracks/31/imported = true
 tracks/31/enabled = true
 tracks/31/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.916667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+tracks/32/type = "audio"
+tracks/32/path = NodePath("Sound_Footstep_Left")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 1 )
+} ],
+"times": PoolRealArray( 0.6 )
+}
+tracks/33/type = "audio"
+tracks/33/path = NodePath("Sound_Footstep_Right")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0.2 )
+}
