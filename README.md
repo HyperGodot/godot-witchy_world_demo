@@ -8,7 +8,7 @@ A simple prototype for a game-experience where witch creatures explore a summery
 * TimeofDay
 
 ## Credits 
-rangermauve
-ashes
-dresk
-fleeky
+* rangermauve
+* ashes
+* dresk
+* fleeky
