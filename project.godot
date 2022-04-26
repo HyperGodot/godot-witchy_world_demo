@@ -127,7 +127,7 @@ window/size/height=728
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/jc.godot.time-of-day/plugin.cfg", "res://addons/scatter/plugin.cfg", "res://addons/waterways/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg" )
 
 [global]
 
