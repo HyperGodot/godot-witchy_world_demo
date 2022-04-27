@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/player/player_core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/player/player_core_local_input.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://assets/sounds/player/fire_grapplinghook1.mp3" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/player/step_right.mp3" type="AudioStream" id=10]
 [ext_resource path="res://assets/sounds/player/eerie_swell.mp3" type="AudioStream" id=11]
-[ext_resource path="res://assets/sounds/player/campfire.mp3" type="AudioStream" id=12]
 
 [node name="PlayerCoreLocal" instance=ExtResource( 1 )]
 
@@ -28,7 +27,6 @@ attenuation_filter_cutoff_hz = 5000.0
 stream = ExtResource( 11 )
 
 [node name="Sound_ToggleLight_1" parent="Model" index="12"]
-stream = ExtResource( 12 )
 attenuation_model = 3
 
 [node name="AnimationTree" parent="." index="3"]

@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/sounds/player/step_left.mp3" type="AudioStream" id=13]
 [ext_resource path="res://assets/sounds/player/whip_jump.mp3" type="AudioStream" id=14]
 [ext_resource path="res://assets/sounds/player/jump-on-wood_cut.mp3" type="AudioStream" id=15]
+[ext_resource path="res://assets/sounds/player/campfire.mp3" type="AudioStream" id=16]
 [ext_resource path="res://game/player/player_core.gd" type="Script" id=24]
 [ext_resource path="res://assets/sounds/player/metal_footstep_3.wav" type="AudioStream" id=26]
 [ext_resource path="res://assets/sounds/player/metal_footstep_2.wav" type="AudioStream" id=27]
@@ -23,7 +24,6 @@
 [ext_resource path="res://assets/sounds/player/release_grapplinghook.wav" type="AudioStream" id=30]
 [ext_resource path="res://assets/sounds/player/fire_grapplinghook1.mp3" type="AudioStream" id=32]
 [ext_resource path="res://assets/sounds/player/teleport_1.mp3" type="AudioStream" id=33]
-[ext_resource path="res://assets/sounds/player/toggleLight_1.wav" type="AudioStream" id=35]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.8
@@ -68,7 +68,7 @@ stream = ExtResource( 33 )
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sound_ToggleLight_1" type="AudioStreamPlayer3D" parent="Model"]
-stream = ExtResource( 35 )
+stream = ExtResource( 16 )
 attenuation_filter_cutoff_hz = 20500.0
 
 [node name="Sound_Footstep_Left" type="AudioStreamPlayer3D" parent="Model"]
