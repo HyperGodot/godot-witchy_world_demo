@@ -19,6 +19,10 @@ onready var settings_action_apply = settings_actions.get_node(@"Apply")
 onready var settings_action_cancel = settings_actions.get_node(@"Cancel")
 
 onready var multiplayer_menu = ui.get_node(@"Multiplayer")
+onready var multiplayer_LabelGWStatus = multiplayer_menu.get_node(@"HyperGatewayStatus").get_node(@"LabelGWStatus")
+onready var multiplayer_StartGW = multiplayer_menu.get_node(@"Gateway").get_node(@"Start")
+onready var multiplayer_StopGW = multiplayer_menu.get_node(@"Gateway").get_node(@"Stop")
+onready var multiplayer_PortInput = multiplayer_menu.get_node(@"HyperGatewayPort").get_node(@"LineEdit")
 
 onready var gi_menu = settings_menu.get_node(@"GI")
 onready var gi_high = gi_menu.get_node(@"High")
@@ -36,15 +40,40 @@ onready var bloom_high = bloom_menu.get_node(@"High")
 onready var bloom_low = bloom_menu.get_node(@"Low")
 onready var bloom_disabled = bloom_menu.get_node(@"Disabled")
 
+var hyperGatewayNode = null
+var hyperGatewayURL : String = ""
+var hyperGatewayPID : int = 0
+var hyperGatewayPort : int = 0
+
+var hyperGWPortInputBackup : String = ""
+
 func _ready():
-	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1920, 1080))
+	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1440, 810))
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+func _getIsMenuShowing() -> bool:
+	return ui.visible
 
 func _on_quit_pressed():
 	get_tree().quit()
+	
+func hideUI():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	ui.hide()
+	
+func showUI():
+	# resetUI()
+	ui.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+func resetUI():
+	settings_menu.hide()
+	multiplayer_menu.hide()
+	main.show()
 
 func _on_Resume_pressed():
 	# Hide UI (for now)
-	ui.hide()
+	hideUI()
 
 func _on_Quit_pressed():
 	get_tree().quit()
@@ -77,10 +106,30 @@ func _on_Settings_pressed():
 		bloom_low.pressed = true
 	elif Settings.bloom_quality == Settings.BloomQuality.DISABLED:
 		bloom_disabled.pressed = true
-
+		
+func _UpdateHyperGatewayInfo():
+	multiplayer_StartGW.disabled = true
+	multiplayer_StopGW.disabled = true
+	
+	if(hyperGatewayNode != null):
+		if(hyperGatewayNode is HyperGateway):
+			hyperGatewayPID = hyperGatewayNode.getGatewayPID()
+			hyperGatewayPort = hyperGatewayNode.getGatewayPort()
+			
+			if( hyperGatewayNode.getIsGatewayRunning() ):
+				multiplayer_StopGW.disabled = false
+				multiplayer_LabelGWStatus.text = "Running (PID " + str(hyperGatewayPID) + ") on Port " + str(hyperGatewayPort)
+			else:
+				multiplayer_StartGW.disabled = false
+				multiplayer_LabelGWStatus.text = "Not Running"
 
 func _on_Multiplayer_pressed():
 	main.hide()
+	# Check for HyperGateway Node
+	if(hyperGatewayNode == null):
+		hyperGatewayNode = get_tree().get_current_scene().find_node("HyperGateway")
+	_UpdateHyperGatewayInfo()
+			
 	multiplayer_menu.show()
 
 func _on_Apply_pressed():
@@ -130,3 +179,21 @@ func _on_Multiplayer_Apply_pressed():
 	main.show()
 	# play_button.grab_focus()
 	multiplayer_menu.hide()
+
+
+func _on_Start_pressed():
+	hyperGatewayNode.start()
+	_UpdateHyperGatewayInfo()
+
+
+func _on_Stop_pressed():
+	hyperGatewayNode.stop()
+	multiplayer_PortInput
+	_UpdateHyperGatewayInfo()
+
+
+func _on_HyperGWPort_LineEdit_text_changed(new_text : String):
+	if(new_text.length() < 1 or new_text.is_valid_integer()):
+		hyperGWPortInputBackup = new_text
+	else:
+		multiplayer_PortInput.text = hyperGWPortInputBackup

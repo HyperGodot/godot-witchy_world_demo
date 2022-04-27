@@ -17,7 +17,8 @@ var previousInputDirection : Vector3 = Vector3.ZERO
 var mouseMovementChanged : bool = false
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# UI is displayed first
+	# Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	clippedCamera.add_exception(get_parent())
 
 func _process(_delta):
