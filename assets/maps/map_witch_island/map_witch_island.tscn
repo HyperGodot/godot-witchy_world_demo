@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://addons/scatter/src/core/scatter_exclude_path.gd" type="Script" id=1]
 [ext_resource path="res://addons/scatter/src/core/scatter.gd" type="Script" id=2]
@@ -9,10 +9,6 @@
 [ext_resource path="res://assets/stem.material" type="Material" id=7]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=8]
 [ext_resource path="res://addons/zylann.hterrain/hterrain_detail_layer.gd" type="Script" id=9]
-[ext_resource path="res://assets/masks/asset_laughing_goblin.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/masks/asset_animal_mask.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/masks/asset_ratface.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/masks/asset_skull.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/emit_blue.material" type="Material" id=14]
 [ext_resource path="res://addons/zylann.hterrain_demo/terrain_data/data.hterrain" type="Resource" id=15]
 [ext_resource path="res://assets/skull.tscn" type="PackedScene" id=16]
@@ -5278,18 +5274,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 198.682, 22.4978, 283.284 )
 
 [node name="pedestal2" parent="." instance=ExtResource( 28 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 217.473, 22.4978, 282.737 )
-
-[node name="asset_laughing_goblin" parent="." instance=ExtResource( 10 )]
-transform = Transform( 0.909447, 0, 0.415821, 0, 1, 0, -0.415821, 0, 0.909447, 207.304, 24.9699, 274.073 )
-
-[node name="asset_animal_mask" parent="." instance=ExtResource( 11 )]
-transform = Transform( 0.99986, 0, 0.0167372, 0, 1, 0, -0.0167372, 0, 0.99986, 217.54, 24.6245, 282.759 )
-
-[node name="asset_ratface" parent="." instance=ExtResource( 12 )]
-transform = Transform( 0.966165, 0, -0.257925, 0, 1, 0, 0.257925, 0, 0.966165, 198.87, 24.5303, 282.999 )
-
-[node name="asset_skull" parent="." instance=ExtResource( 13 )]
-transform = Transform( 0.985682, 0, -0.16861, 0, 1, 0, 0.16861, 0, 0.985682, 215.262, 25.1858, 289.518 )
 
 [node name="Fire" parent="." instance=ExtResource( 29 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 217.482, 26.7895, 282.505 )

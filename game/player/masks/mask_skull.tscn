@@ -10,11 +10,13 @@ radius = 0.05
 script = ExtResource( 2 )
 
 [node name="asset_skull" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.182, 0, -2.74812e-08, -1.03191e-08, 0.168682, 0.0683404, 2.54703e-08, 0.0683404, -0.168682, 0, 0.0515466, 0.0346236 )
 
 [node name="Area" type="Area" parent="."]
+transform = Transform( 0.182, 0, 0, 0, 0.168682, -0.0683404, 0, 0.0683404, 0.168682, 0, 0.0515466, 0.0346236 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 6.91679, 0, 0, 0, 6.44877, 0, 0, 0, 9.56146, 0, 0.0420572, 0 )
+transform = Transform( -0.182, 0, -2.74812e-08, 0, 0.182, 0, 2.74812e-08, 0, -0.182, 0, 0.0420572, 0 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

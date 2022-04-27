@@ -10,11 +10,13 @@ radius = 0.05
 script = ExtResource( 2 )
 
 [node name="asset_animal_mask" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.182, 0, -2.74812e-08, -6.8984e-09, 0.176173, 0.045686, 2.66013e-08, 0.045686, -0.176173, 0.000179345, -0.0357624, 0.0657877 )
 
 [node name="Area" type="Area" parent="."]
+transform = Transform( 0.182, 0, 0, 0, 0.176173, -0.045686, 0, 0.045686, 0.176173, 0.0248103, -0.0357624, 0.0657877 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 8.48619, 0, 0, 0, 8.12711, 0, 0, 0, 10, -0.024631, 0.41426, 0 )
+transform = Transform( -0.182, 0, -2.74812e-08, 0, 0.182, 0, 2.74812e-08, 0, -0.182, 0, 0.41426, -1.07666e-09 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

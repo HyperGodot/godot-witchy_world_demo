@@ -10,13 +10,12 @@ radius = 0.05
 script = ExtResource( 2 )
 
 [node name="asset_laughing_goblin" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.182, 0, -2.74812e-08, -8.87578e-09, 0.172246, 0.0587816, 2.60084e-08, 0.0587816, -0.172246, -2.61758e-10, -0.0733041, 0.0521224 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.61758e-10, 0, -0.00598833 )
 
 [node name="Area" type="Area" parent="."]
-transform = Transform( 0.182, 0, 0, 0, 0.172246, -0.0587816, 0, 0.0587816, 0.172246, 0, -0.0752382, 0.0577898 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( -0.182, 0, -2.74812e-08, 0, 0.182, 0, 2.74812e-08, 0, -0.182, 2.61758e-10, 0.441673, 0 )
+transform = Transform( -8, 0, -6.99382e-07, 0, 8.9737, 0, 6.99382e-07, 0, -8, 2.61758e-10, 0.441673, 0 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

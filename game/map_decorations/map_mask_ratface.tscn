@@ -10,13 +10,12 @@ radius = 0.05
 script = ExtResource( 2 )
 
 [node name="asset_ratface" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.182, 0, -2.74812e-08, -8.03198e-09, 0.174053, 0.0531934, 2.62813e-08, 0.0531934, -0.174053, 2.69032e-10, 0.0118691, 0.0606859 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.69032e-10, 0, 0.00615473 )
 
 [node name="Area" type="Area" parent="."]
-transform = Transform( 0.182, 0, 0, 0, 0.174053, -0.0531934, 0, 0.0531934, 0.174053, 0, 0.0136679, 0.0547999 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( -0.182, 0, -2.74812e-08, 0, 0.182, 0, 2.74812e-08, 0, -0.182, -2.69032e-10, 0.0282457, 0 )
+transform = Transform( -0.702435, 0, -8.74228e-08, 0, 1, 0, 6.14088e-08, 0, -1, -2.69032e-10, 0.0282457, 0 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
