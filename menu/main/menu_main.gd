@@ -26,6 +26,12 @@ onready var multiplayer_LabelGossipStatus = multiplayer_menu.get_node(@"HyperGos
 onready var multiplayer_PortInput = multiplayer_menu.get_node(@"HyperGatewayPort").get_node(@"LineEdit")
 onready var multiplayer_GossipURLInput = multiplayer_menu.get_node(@"GossipURL").get_node(@"LineEdit")
 
+onready var shadows_menu = settings_menu.get_node(@"Shadows")
+onready var shadows_4096 = shadows_menu.get_node(@"4096")
+onready var shadows_2048 = shadows_menu.get_node(@"2048")
+onready var shadows_1024 = shadows_menu.get_node(@"1024")
+onready var shadows_disabled = shadows_menu.get_node(@"Disabled")
+
 onready var gi_menu = settings_menu.get_node(@"GI")
 onready var gi_high = gi_menu.get_node(@"High")
 onready var gi_low = gi_menu.get_node(@"Low")
@@ -50,6 +56,8 @@ var hyperGossipNode : HyperGossip = null
 var hyperGossipURL : String = ""
 
 var hyperGWPortInputBackup : String = ""
+
+var world_environment : WorldEnvironment = null
 
 func _ready():
 	get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1440, 810))
@@ -87,7 +95,11 @@ func _on_Settings_pressed():
 	main.hide()
 	settings_menu.show()
 	settings_action_cancel.grab_focus()
-
+	
+	# Find Environment Node
+	if(world_environment == null):
+		world_environment = get_tree().get_current_scene().find_node("Witch Island Environment")
+	
 	if Settings.gi_quality == Settings.GIQuality.HIGH:
 		gi_high.pressed = true
 	elif Settings.gi_quality == Settings.GIQuality.LOW:
@@ -153,29 +165,58 @@ func _on_Apply_pressed():
 	main.show()
 	# play_button.grab_focus()
 	settings_menu.hide()
+	
+	if shadows_4096.pressed:
+		Settings.shadows_quality = Settings.ShadowsQuality.SHADOWS_4096
+		ProjectSettings["rendering/quality/directional_shadow/size"] = 4096
+		ProjectSettings["rendering/quality/shadow_atlas/size"] = 4096
+	elif shadows_2048.pressed:
+		Settings.shadows_quality = Settings.ShadowsQuality.SHADOWS_2048
+		ProjectSettings["rendering/quality/directional_shadow/size"] = 2048
+		ProjectSettings["rendering/quality/shadow_atlas/size"] = 2048
+	elif shadows_1024.pressed:
+		Settings.shadows_quality = Settings.ShadowsQuality.SHADOWS_1024
+		ProjectSettings["rendering/quality/directional_shadow/size"] = 1024
+		ProjectSettings["rendering/quality/shadow_atlas/size"] = 1024
+	elif shadows_disabled.pressed:
+		Settings.shadows_quality = Settings.ShadowsQuality.DISABLED
+		ProjectSettings["rendering/quality/directional_shadow/size"] = 0
+		ProjectSettings["rendering/quality/shadow_atlas/size"] = 0
 
 	if gi_high.pressed:
 		Settings.gi_quality = Settings.GIQuality.HIGH
+		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = true
 	elif gi_low.pressed:
 		Settings.gi_quality = Settings.GIQuality.LOW
+		ProjectSettings["rendering/quality/voxel_cone_tracing/high_quality"] = false
 	elif gi_disabled.pressed:
 		Settings.gi_quality = Settings.GIQuality.DISABLED
 
 	if aa_8x.pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_8X
+		get_viewport().msaa = Viewport.MSAA_8X
 	elif aa_4x.pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_4X
+		get_viewport().msaa = Viewport.MSAA_4X
 	elif aa_2x.pressed:
 		Settings.aa_quality = Settings.AAQuality.AA_2X
+		get_viewport().msaa = Viewport.MSAA_2X
 	elif aa_disabled.pressed:
 		Settings.aa_quality = Settings.AAQuality.DISABLED
+		get_viewport().msaa = Viewport.MSAA_DISABLED
 
 	if bloom_high.pressed:
 		Settings.bloom_quality = Settings.BloomQuality.HIGH
+		world_environment.environment.glow_enabled = true
+		world_environment.environment.glow_bicubic_upscale = true
 	elif bloom_low.pressed:
 		Settings.bloom_quality = Settings.BloomQuality.LOW
+		world_environment.environment.glow_enabled = true
+		world_environment.environment.glow_bicubic_upscale = false
 	elif bloom_disabled.pressed:
 		Settings.bloom_quality = Settings.BloomQuality.DISABLED
+		world_environment.environment.glow_enabled = false
+		world_environment.environment.glow_bicubic_upscale = false
 
 	Settings.save_settings()
 

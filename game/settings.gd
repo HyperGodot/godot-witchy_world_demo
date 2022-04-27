@@ -1,5 +1,12 @@
 extends Node
 
+enum ShadowsQuality {
+	DISABLED = 0,
+	SHADOWS_1024 = 1,
+	SHADOWS_2048 = 2,
+	SHADOWS_4096 = 3,
+}
+
 enum GIQuality {
 	DISABLED = 0,
 	LOW = 1,
@@ -32,12 +39,10 @@ enum Resolution {
 	NATIVE = 3,
 }
 
+var shadows_quality = ShadowsQuality.SHADOWS_1024
 var gi_quality = GIQuality.LOW
 var aa_quality = AAQuality.AA_2X
-var ssao_quality = SSAOQuality.DISABLED
 var bloom_quality = BloomQuality.HIGH
-var resolution = Resolution.NATIVE
-var fullscreen = true
 
 func _ready():
 	load_settings()
@@ -53,29 +58,22 @@ func load_settings():
 	if typeof(d) != TYPE_DICTIONARY:
 		return
 
+	if "shadows" in d:
+		shadows_quality = int(d.shadows)
+	
 	if "gi" in d:
 		gi_quality = int(d.gi)
 
 	if "aa" in d:
 		aa_quality = int(d.aa)
 
-	if "ssao" in d:
-		ssao_quality = int(d.ssao)
-
 	if "bloom" in d:
 		bloom_quality = int(d.bloom)
-
-	if "resolution" in d:
-		resolution = int(d.resolution)
-
-	if "fullscreen" in d:
-		fullscreen = bool(d.fullscreen)
-
 
 func save_settings():
 	var f = File.new()
 	var error = f.open("user://settings.json", File.WRITE)
 	assert(not error)
 
-	var d = { "gi":gi_quality, "aa":aa_quality, "ssao":ssao_quality, "bloom":bloom_quality, "resolution":resolution, "fullscreen":fullscreen }
+	var d = { "shadows":shadows_quality, "gi":gi_quality, "aa":aa_quality, "bloom":bloom_quality }
 	f.store_line(to_json(d))
