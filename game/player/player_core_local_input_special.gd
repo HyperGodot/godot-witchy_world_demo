@@ -10,7 +10,9 @@ func _ready():
 	
 func _input(_event):
 	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+		# Open UI (for now)
+		get_tree().get_current_scene().get_node("UI").get_node("Menu_Main").ui.show()
+		# get_tree().quit()
 	if Input.is_action_just_pressed("toggleMouse"):
 		if Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE:
 			mouseModeBackup = Input.get_mouse_mode()

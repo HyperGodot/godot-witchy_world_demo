@@ -34,7 +34,7 @@ onready var meshNode : Spatial = $Model
 onready var meshSkeletonNode : Skeleton = $Model/rig/Skeleton
 onready var meshFaceBone : int = meshSkeletonNode.find_bone("DEF-spine.006")
 onready var meshFaceBonePos : Transform = meshSkeletonNode.get_bone_pose(meshFaceBone)
-onready var meshMaskAttachment : BoneAttachment = $Model/rig/Skeleton/Spatial/MaskAttachment
+onready var meshMaskAttachment : BoneAttachment = $Model/rig/Skeleton/MaskAttachment
 
 var activeMeshMaskAttachment
 

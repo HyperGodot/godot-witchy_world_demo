@@ -62,6 +62,7 @@ fov = 90.0
 far = 8192.0
 
 [node name="PlayerDebugUI" parent="." index="7" instance=ExtResource( 5 )]
+visible = false
 
 [node name="OmniLight" parent="." index="9"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.73959, 0 )
