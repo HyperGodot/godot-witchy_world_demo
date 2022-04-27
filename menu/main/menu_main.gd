@@ -22,7 +22,9 @@ onready var multiplayer_menu = ui.get_node(@"Multiplayer")
 onready var multiplayer_LabelGWStatus = multiplayer_menu.get_node(@"HyperGatewayStatus").get_node(@"LabelGWStatus")
 onready var multiplayer_StartGW = multiplayer_menu.get_node(@"Gateway").get_node(@"Start")
 onready var multiplayer_StopGW = multiplayer_menu.get_node(@"Gateway").get_node(@"Stop")
+onready var multiplayer_LabelGossipStatus = multiplayer_menu.get_node(@"HyperGossipStatus").get_node(@"LabelGossipStatus")
 onready var multiplayer_PortInput = multiplayer_menu.get_node(@"HyperGatewayPort").get_node(@"LineEdit")
+onready var multiplayer_GossipURLInput = multiplayer_menu.get_node(@"GossipURL").get_node(@"LineEdit")
 
 onready var gi_menu = settings_menu.get_node(@"GI")
 onready var gi_high = gi_menu.get_node(@"High")
@@ -40,10 +42,12 @@ onready var bloom_high = bloom_menu.get_node(@"High")
 onready var bloom_low = bloom_menu.get_node(@"Low")
 onready var bloom_disabled = bloom_menu.get_node(@"Disabled")
 
-var hyperGatewayNode = null
-var hyperGatewayURL : String = ""
+var hyperGatewayNode : HyperGateway = null
 var hyperGatewayPID : int = 0
 var hyperGatewayPort : int = 0
+
+var hyperGossipNode : HyperGossip = null
+var hyperGossipURL : String = ""
 
 var hyperGWPortInputBackup : String = ""
 
@@ -108,8 +112,9 @@ func _on_Settings_pressed():
 		bloom_disabled.pressed = true
 		
 func _UpdateHyperGatewayInfo():
-	multiplayer_StartGW.disabled = true
+	multiplayer_StartGW.disabled = false
 	multiplayer_StopGW.disabled = true
+	multiplayer_LabelGWStatus.text = "Not Running"
 	
 	if(hyperGatewayNode != null):
 		if(hyperGatewayNode is HyperGateway):
@@ -118,10 +123,17 @@ func _UpdateHyperGatewayInfo():
 			
 			if( hyperGatewayNode.getIsGatewayRunning() ):
 				multiplayer_StopGW.disabled = false
+				multiplayer_StartGW.disabled = true
 				multiplayer_LabelGWStatus.text = "Running (PID " + str(hyperGatewayPID) + ") on Port " + str(hyperGatewayPort)
-			else:
-				multiplayer_StartGW.disabled = false
-				multiplayer_LabelGWStatus.text = "Not Running"
+				
+func _UpdateHyperGossipInfo():
+	multiplayer_LabelGossipStatus.text = "N/A"
+	if(hyperGossipNode != null):
+		if(hyperGossipNode is HyperGossip):
+			if( hyperGatewayNode.getIsGatewayRunning() ):
+				hyperGossipURL = hyperGossipNode._get_url()
+				multiplayer_LabelGossipStatus.text = hyperGossipURL
+			
 
 func _on_Multiplayer_pressed():
 	main.hide()
@@ -129,6 +141,11 @@ func _on_Multiplayer_pressed():
 	if(hyperGatewayNode == null):
 		hyperGatewayNode = get_tree().get_current_scene().find_node("HyperGateway")
 	_UpdateHyperGatewayInfo()
+	# Check for HyperGossip Node
+	if(hyperGossipNode == null):
+		hyperGossipNode = get_tree().get_current_scene().find_node("HyperGossip")
+	_UpdateHyperGossipInfo()
+	
 			
 	multiplayer_menu.show()
 
@@ -182,18 +199,22 @@ func _on_Multiplayer_Apply_pressed():
 
 
 func _on_Start_pressed():
+	hyperGatewayNode.port = multiplayer_PortInput.text
+	hyperGossipNode.url = multiplayer_GossipURLInput.text
 	hyperGatewayNode.start()
 	_UpdateHyperGatewayInfo()
+	_UpdateHyperGossipInfo()
 
 
 func _on_Stop_pressed():
 	hyperGatewayNode.stop()
 	multiplayer_PortInput
 	_UpdateHyperGatewayInfo()
+	_UpdateHyperGossipInfo()
 
 
 func _on_HyperGWPort_LineEdit_text_changed(new_text : String):
-	if(new_text.length() < 1 or new_text.is_valid_integer()):
+	if(new_text.length() < 1 or new_text.is_valid_integer() or new_text.to_int() > 65535):
 		hyperGWPortInputBackup = new_text
 	else:
 		multiplayer_PortInput.text = hyperGWPortInputBackup

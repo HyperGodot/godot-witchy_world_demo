@@ -163,6 +163,9 @@ func _get_extension_url():
 
 func _get_extension_listen_url():
 	return url + '$/extensions/'
+	
+func _get_url() -> String:
+	return url
 
 func _make_id():
 	return str(randi()) + str(randi())
