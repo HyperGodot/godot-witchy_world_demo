@@ -44,7 +44,7 @@ func _input(_event):
 		mapNode.toggleScatterAreaVisibility()
 	if Input.is_action_just_pressed("superDEBUG"):
 		# OS.create_process("Tumble.exe", [])
-		OS.execute("Tumble.exe", ["--main-pack", "Tumble.pck"], false)
+		OS.execute(OS.get_executable_path(), ["--main-pack", "marbles.pck"], false)
 		get_tree().quit()
 		#var success = ProjectSettings.load_resource_pack("res://Tumble.pck")
 	
